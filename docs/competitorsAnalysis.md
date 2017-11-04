@@ -32,7 +32,10 @@
 	
 ## Jitterbit  
 [website](https://www.jitterbit.com/)  
-* 
+* Workday, MS Dynamics, Salesforce, NetSuite, SAP, Siebel ...
+* Costs Standard, Professional & Enterprise  
+  https://www.jitterbit.com/platform/pricing/
+
 
 
 
