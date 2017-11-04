@@ -3,7 +3,7 @@
 
 
 ## IFTTT
-https://ifttt.com/
+[website](https://ifttt.com/)
 Is not exactly the same as an Int. Platform, but it is interesting  
 Many services from knows inet services: amazon, google, Fb, etc called "applets"  
 ex. "Sync your Amazon Alexa to-dos with your reminders"  
