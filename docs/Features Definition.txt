@@ -1,0 +1,7 @@
+Features Definition
+
+- Monitorizacion
+- Configuración
+- Connectors: Java, JavaScript, C# or Python
+- Seguridad
+- RabbitMq
