@@ -49,25 +49,39 @@
 * [Free Trial](https://www.scribesoft.com/products/trial-software/) 
 * Have a marketplace for aws s3, sql, etc. No mongo or nosql ddbb
 
+## Anypoint (Mulesoft)
+[website](https://anypoint.mulesoft.com/login/#/signin)
+* Very Mule Dessign  
+* Design Center  
+  Design, build, and test APIs and Mule applications.
+* Exchange  
+  Discover and share reusable APIs, connectors, and templates.
+* Management Center  
+  Deploy, operate, and analyze your APIs and applications.
+  * Access Management
+  * API Manager
+  * Runtime Manager
+  * Data GAteway
+* Developer Tollkits
+* Pricing
+  * On-prem options
+  * Base & Platinum
+  * No price showed
 
 
-https://anypoint.mulesoft.com/login/#/signin
-http://www.onesaas.com/
-https://syncapps.cazoomi.com/
-https://boomi.com/
-https://segment.com/
-https://zapier.com/
-https://www.piesync.com/
-http://www.dataconnectcorp.com/
-https://www.ibm.com/cloud-computing/products/cloud-integration/
-https://www.informatica.com/
-https://azure.microsoft.com/en-us/services/biztalk-services/
-https://www.treasuredata.com/
-https://www.liaison.com/
-https://www.datadoghq.com/
-https://tray.io/
-https://www.xplenty.com/
-http://www.iconductcloud.com/
-
-
-the end
+http://www.onesaas.com/  
+https://syncapps.cazoomi.com/  
+https://boomi.com/  
+https://segment.com/  
+https://zapier.com/  
+https://www.piesync.com/  
+http://www.dataconnectcorp.com/  
+https://www.ibm.com/cloud-computing/products/cloud-integration/  
+https://www.informatica.com/  
+https://azure.microsoft.com/en-us/services/biztalk-services/  
+https://www.treasuredata.com/  
+https://www.liaison.com/  
+https://www.datadoghq.com/  
+https://tray.io/  
+https://www.xplenty.com/  
+http://www.iconductcloud.com/  
