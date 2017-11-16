@@ -71,6 +71,9 @@
 
 ## OneSaaS
 [website](http://www.onesaas.com/)
+
+**Iteresting Use Cases & Benefits**
+
 * Connect to
   * Accounting: SageOne, xero, Myob
   * Invoicing: bill.com, Feshbooks, Hervest, Whmos
@@ -82,10 +85,24 @@
   * Premium 34/mo (600 transactions per month)
   * Unlimites 69/mo (Unlimited transactions per month)
   * http://www.onesaas.com/pricing/
-  
-  
+* Use cases  (´How businesses like yours are using OneSaas´)
+  * Online Retail  
+  Connect multiple shopping carts and even your eBay store. Automate your accounting, fulfillment and inventory management. Plus connect your CRM and email marketing app.
+  * Agencies, Web Developers and Consultants  
+  Connect your billing & invoicing app to accounting. When an invoice is created, it will be automatically created in accounting. Plus connect your CRM and email marketing app.
+  * B2B Sales  
+  Connect your CRM to accounting. When you close a deal, the invoice and customer will automatically be created in accounting. Plus connect your email marketing app.
+  * Event Organisers  
+  Connect Eventbrite to accounting. When a ticket is sold, the invoice and customer will automatically be created in accounting. Plus connect your CRM and email marketing app.
+* Benefits (´Why thousands of businesses love OneSaas...´)
+  * Save time & money  
+  No more manually updating your business apps, saving you hours of work.
+  * Accurate up to date data  
+  Always know your data is correct across all your apps. No human errors or out of date data.
+  * Better business decisions  
+  Better data means better insights allowing more informed business decisions.
 
-  
+
 https://syncapps.cazoomi.com/  
 https://boomi.com/  
 https://segment.com/  
