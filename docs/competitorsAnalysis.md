@@ -72,7 +72,11 @@
 ## OneSaaS
 [website](http://www.onesaas.com/)
 
-**Iteresting Use Cases & Benefits**
+![#f03c15](https://placehold.it/15/f03c15/000000?text=+)
+```diff
+- Iteresting Use Cases & Benefits
+```
+
 
 * Connect to
   * Accounting: SageOne, xero, Myob
