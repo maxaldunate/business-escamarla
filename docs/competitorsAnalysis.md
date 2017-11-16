@@ -20,7 +20,7 @@
 	1. Accelerate the adoption of your API  
 	2. API platform for innovation  
 	3. IT integration and transformation   
-* costs. Price Free Trial	$2995	$5995	$11995	Call Us  
+* Pricing. Price Free Trial	$2995	$5995	$11995	Call Us  
   https://cloud-elements.com/pricing/  
 * Use cases
 	1. EMBEDDED INTEGRATION FOR SAAS COMPANIES
@@ -33,16 +33,17 @@
 ## Jitterbit  
 [website](https://www.jitterbit.com/)  
 * Workday, MS Dynamics, Salesforce, NetSuite, SAP, Siebel ...
-* Costs Standard, Professional & Enterprise  
+* Pricing
+  * Standard, Professional & Enterprise  
   https://www.jitterbit.com/platform/pricing/
 
 ## Scribe
 [website](https://www.scribesoft.com/)  
 * Scribe Online Integration Services (IS)  
-  https://www.youtube.com/watch?time_continue=2&v=__yMVT_icxE
+  https://www.youtube.com/watch?time_continue=2&v=__yMVT_icxE  
 * Language Scratch by MIT Media Labs
 * MS Synamics, Salesforce, ...
-* Costs. From 279/mo to 2K/mo or just "call us"  
+* Pricing. From 279/mo to 2K/mo or just "call us"  
   https://www.scribesoft.com/products/scribe-online/scribe-online-pricing-tiers/
 * Scribe Online: Our integration platform as a service (iPaaS) offers the convenience and agility of a secure, multi-tenant cloud-based service.
 * Have an on-premise option
@@ -68,8 +69,23 @@
   * Base & Platinum
   * No price showed
 
+## OneSaaS
+[website](http://www.onesaas.com/)
+* Connect to
+  * Accounting: SageOne, xero, Myob
+  * Invoicing: bill.com, Feshbooks, Hervest, Whmos
+  * Ecommerce: 1&1, BigCommerce, ebay, eventbrite, Magento,  neto, shopify... etc
+  * CRM: Zoho CRM, salesForce
+  * Shipping & Logistics: Coghian, neto, Next, pikpak, shipping easy, shipwire, unleashed, etc.
+* Pricing
+  * Basic 24/mo  (300 transactions per month)
+  * Premium 34/mo (600 transactions per month)
+  * Unlimites 69/mo (Unlimited transactions per month)
+  * http://www.onesaas.com/pricing/
+  
+  
 
-http://www.onesaas.com/  
+  
 https://syncapps.cazoomi.com/  
 https://boomi.com/  
 https://segment.com/  
