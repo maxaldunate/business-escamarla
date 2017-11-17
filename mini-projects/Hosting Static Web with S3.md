@@ -7,16 +7,16 @@ Mini-Project
 project: escamarla-org-static
 
 #### Bucket 1
-name: escamarla.org
-arn:aws:s3:::escamarla.org
-Endpoint: http://escamarla.org.s3-website-eu-west-1.amazonaws.com
-browser url: escamarla.org.s3-website-eu-west-1.amazonaws.com
+name: escamarla.org  
+arn:aws:s3:::escamarla.org  
+Endpoint: http://escamarla.org.s3-website-eu-west-1.amazonaws.com  
+browser url: escamarla.org.s3-website-eu-west-1.amazonaws.com  
 
 #### Bucket 2
-name: www.escamarla.org
-arn:aws:s3:::www.escamarla.org
-Endpoint:  redirection (same escamarla.org endpoint)
-browser url: http://www.escamarla.org.s3-website-eu-west-1.amazonaws.com
+name: www.escamarla.org  
+arn:aws:s3:::www.escamarla.org  
+Endpoint:  redirection (same escamarla.org endpoint)  
+browser url: http://www.escamarla.org.s3-website-eu-west-1.amazonaws.com  
 
 #### Backuet Policy
 ```
@@ -27,10 +27,8 @@ browser url: http://www.escamarla.org.s3-website-eu-west-1.amazonaws.com
         "Effect":"Allow",
 	  "Principal": "*",
       "Action":["s3:GetObject"],
-      "Resource":["arn:aws:s3:::escamarla.org/*"
-      ]
-    }
-  ]
+      "Resource":["arn:aws:s3:::escamarla.org/*"]
+    }]
 }
 ```
 
