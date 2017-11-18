@@ -77,7 +77,6 @@
 - Iteresting Use Cases & Benefits
 ```
 
-
 * Connect to
   * Accounting: SageOne, xero, Myob
   * Invoicing: bill.com, Feshbooks, Hervest, Whmos
@@ -106,8 +105,24 @@
   * Better business decisions  
   Better data means better insights allowing more informed business decisions.
 
+## SyncApps - Cazzomi
+[website](https://syncapps.cazoomi.com/)
+* Youtube  channel  
+  https://www.youtube.com/user/Cazoomi  
+* Looks like a Startup
+* Very 'CRM' oriented
+* Maybe trying to 'program through integration'
+* Pricing
+  * Link: https://syncapps.cazoomi.com/pricing
+  * All options have 2 weeks free
+  * Free: 1 sync profile month/company
+  * Basic: 19.99 2 sync profiles month/company
+  * Professiona: 49.99 5 sync profiles month/company
+  * Enterprise: 99.99 20 sync profiles month/company
 
-https://syncapps.cazoomi.com/  
+
+
+  
 https://boomi.com/  
 https://segment.com/  
 https://zapier.com/  
