@@ -45,3 +45,32 @@ psw Aluska2
 * Restore Wordpress
 * Hosted Zones and Records!!!
 
+
+
+Escamarla.es
+Registar data
+Name servers
+ns-1471.awsdns-55.org
+ns-177.awsdns-22.com
+ns-1674.awsdns-17.co.uk
+ns-613.awsdns-12.net
+
+SOA ns-1471.awsdns-55.org. awsdns-hostmaster.amazon.com. 1 7200 900 1209600 86400
+
+Escamarla.org
+Registar data
+Name servers
+ns-1269.awsdns-30.org
+ns-1702.awsdns-20.co.uk
+ns-559.awsdns-05.net
+ns-461.awsdns-57.com
+
+SOA ns-1269.awsdns-30.org. awsdns-hostmaster.amazon.com. 1 7200 900 1209600 86400
+
+Escamarla.eu
+Registar data
+Name servers
+ns-1297.awsdns-34.org
+ns-562.awsdns-06.net
+ns-1799.awsdns-32.co.uk
+ns-17.awsdns-02.com
