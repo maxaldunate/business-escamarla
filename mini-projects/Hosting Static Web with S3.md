@@ -1,16 +1,25 @@
 Mini-Project  
 ## Hosting Static Web with Amazon S3
 
-### escamarla.org
+### sites http://escamarla.org
+### sites http://www.escamarla.org
 
 #### Tags
 project: escamarla-org-static
 
-#### Bucket Único
-name: www.escamarla.org
-arn:aws:s3:::www.escamarla.org
-Endpoint:    http://www.escamarla.org.s3-website-eu-west-1.amazonaws.com
-browser url: http://www.escamarla.org.s3-website-eu-west-1.amazonaws.com/index.html
+#### Bucket 1
+name:			escamarla.org
+arn:			arn:aws:s3:::escamarla.org
+Endpoint:		http://escamarla.org.s3-website-eu-west-1.amazonaws.com
+browser url:	http://escamarla.org.s3-website-eu-west-1.amazonaws.com/index.html
+
+#### Bucket 2
+name:			www.escamarla.org
+arn: 		 	arn:aws:s3:::www.escamarla.org
+Endpoint:    	Redirection to "arn:aws:s3:::escamarla.org"
+browser url:	http://www.escamarla.org.s3-website-eu-west-1.amazonaws.com/index.html
+
+
 
 #### Backuet Policy
 ```
