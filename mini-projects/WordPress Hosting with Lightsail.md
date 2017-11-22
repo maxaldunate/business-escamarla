@@ -74,3 +74,24 @@ ns-1297.awsdns-34.org
 ns-562.awsdns-06.net
 ns-1799.awsdns-32.co.uk
 ns-17.awsdns-02.com
+
+
+
+Transferencia de dominio 
+
+dzarquitectura.com 
+Desactivar renovación automática
+expira el 31.12.2017
+Su código de autorización
+$fd.7ijb
+
+
+elcaramelo.com
+Desactivar renovación automática
+expira el 21.02.2018
+Su código de autorización
+nMMJ6*28qd6i
+
+elcaramelo.es 
+Desactivar renovación automática
+expira el 21.02.2018
