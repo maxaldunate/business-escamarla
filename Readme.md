@@ -1,7 +1,4 @@
-# Escamarla 
+# Escamarla Project Notes-Tasks
 Flexible and Reliable Integration as a service
 
-
-## Starting project ...
-
-The End
+Tasks on excel file
