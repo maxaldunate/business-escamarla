@@ -323,3 +323,23 @@ copiado carpeta de plugins /var/www/html/dzarquitectura/wp-content/plugins/*
 df -k
 
 
+
+Transferencia de Dominios
+
+Codigo de Autorizacion
+dzarquitectura.com
+$fd.7ijb
+Mail de transferenciade 1and1 Ok!
+
+elcaramelo.com
+nMMJ6*28qd6i
+Mail de transferenciade 1and1 Ok!
+
+elcaramelo.es
+
+
+escamarla.es
+Forwarded mails to https://improvmx.com/
+
+
+
