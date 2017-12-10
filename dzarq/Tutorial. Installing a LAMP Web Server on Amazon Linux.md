@@ -70,7 +70,3 @@ sudo service mysqld start
 rm phpMyAdmin-latest-all-languages.tar.gz
 
 ```
-
-New Role "dz-for-mysql"
-
-
