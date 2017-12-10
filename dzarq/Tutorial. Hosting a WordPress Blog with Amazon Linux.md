@@ -49,8 +49,8 @@ define('NONCE_SALT',       'hAZL,INlxb(hjurr%RDXO-o>`h#u`YJ |zGK*lR|}/uBE6%p~5dP
 
 ```
 
-mkdir /var/www/html/blog
-cp -r wordpress/* /var/www/html/blog/
+mkdir /var/www/html
+cp -r wordpress/* /var/www/html
 
 WP Permalinks
 
