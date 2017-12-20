@@ -1,26 +1,16 @@
-dzarq Improvements
+## Project dzarquitectura.com
+### Improvements
 
 * Installed. sudo yum install -y htop
 
-
 * Create a RDS MySql Free tier instance
-DB instance identifier/dzarq
-Master username/arnoldo
-Master password/1971arnol
-Database name/db363458885
-database port/3306
+- DB instance identifier/dzarq
+- Master username/arnoldo
+- Master password/1971arnol
+- Database name/db363458885
+- database port/3306
+- Endpoint/dzarq.cmc0vyhzyanj.eu-west-1.rds.amazonaws.com
 
-
-Endpoint/dzarq.cmc0vyhzyanj.eu-west-1.rds.amazonaws.com
-
-* sudo su
-
-* nano var/www/html/phpMyAdmin/libraries/config.default.php
-
-$ ls config.*.php -l
-$ sudo find / -name "config.default.php"
-
-$ aws s3 cp s3://dzarq/config.default.rds.php config.default.rds.php
 
 * Port forwarding to SSH host to virtualbox gest
 
@@ -33,10 +23,8 @@ $ mysql -h dzarq.cmc0vyhzyanj.eu-west-1.rds.amazonaws.com -P 3306 -u arnoldo -p
 * Reinstall phpMyAdmin like awsRdsMyAdmin
 
 
-
-
 File phpMyAdmin/config.inc.php
-
+```
 <?php
 /*
  * Generated configuration file
@@ -67,33 +55,36 @@ $cfg['UploadDir'] = '';
 $cfg['SaveDir'] = '';
 ?>
 
+```
+
+* Change in /var/www/html/wp-config.php
+- change host, user, pass and authentication keys
+- remove phpMyAdmin
+- uninstall mysql
 
 
-Elementos a generar dzarqImpro
+* File wp-config.php
+```
+[mysqld]
+datadir=/var/lib/mysql
+socket=/var/lib/mysql/mysql.sock
+# Disabling symbolic-links is recommended to prevent assorted security risks
+symbolic-links=0
+# Settings user and group are ignored when systemd is used.
+# If you need to run mysqld under a different user or group,
+# customize your systemd unit file for mysqld according to the
+# instructions in http://fedoraproject.org/wiki/Systemd
 
-- VPC
-- SG
-- Subnets
-- AutoScaling
-- IAM Role for RDS
-- IAM Role to run CloudFormation
-- AMI with Lamp
-- Key Pairs
-- ELB
-- EIP
-- Alarms & Installed Agents
-- NACL for private subnet
-- RT for each subnet
-- HTTPS
-- Bastion Host
+[mysqld_safe]
+log-error=/var/log/mysqld.log
+pid-file=/var/run/mysqld/mysqld.pid
+```
 
+* Commands 
 
+```
+sudo yum remove mysql56-server
+sudo rm -R /var/lib/mysql/
+sudo rm -R /var/log/mysqld.log
 
-
-
-
-
-
-
-
-
+```

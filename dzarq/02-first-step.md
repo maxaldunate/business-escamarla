@@ -1,4 +1,4 @@
-### Project dzarquitectura.com
+## Project dzarquitectura.com
 
 * WordPress Hosting with Lightsail  
   So easy, but can't access to each resource from aws console  
@@ -72,7 +72,8 @@
   - Choose "español"
   - Titulo del Sitio DzArquitectura
   - Nombre de usario deboritah
-  - 2r4dyhHJcdn6Mf^j@p
+  - User admin for login at wordpress http://dzarquitectura.com/wp-admin/
+  - password for admin is 2r4dyhHJcdn6Mf^j@p
   - maxaldunate@gmail.com
   - Final result: http://www.dzarquitectura.com/
 

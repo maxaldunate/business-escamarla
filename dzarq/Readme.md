@@ -7,6 +7,7 @@
 * Steps
   * [Project dzarquitectura.com - Step One](02-first-step.md)
   * [Project dzarquitectura.com - Improvements](03-improvements.md)
+  * [Project dzarquitectura.com - CloudFormation](04-cloudFormation.md)
 
 * Scripts
   * [USer Data to Install Lamp and Check](scripts/lamp.sh)
