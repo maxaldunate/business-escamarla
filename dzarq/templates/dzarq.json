@@ -1,0 +1,89 @@
+{
+  "AWSTemplateFormatVersion" : "2010-09-09",
+
+  "Description" : "dzarquitectura project template",
+
+  "Resources" : {
+    "MainVpc" : {
+      "Type" : "AWS::EC2::VPC",
+      "Properties" : {
+        "CidrBlock" : "192.168.0.0/16",
+        "EnableDnsSupport" : "true",
+        "EnableDnsHostnames" : "false",
+        "InstanceTenancy" : "default",
+        "Tags" : [ {"Key" : "Name", "Value" : "MainVpc"},
+				   {"Key" : "Project", "Value" : "dzarq"},
+                   {"Key" : "Ceco", "Value" : "dzImprovements"}		]
+  		   }
+  		},
+	"TheRT" : {
+	   "Type" : "AWS::EC2::RouteTable",
+	   "Properties" : {
+		  "VpcId" : { "Ref": "MainVpc" },
+		  "Tags" : [ {"Key" : "Name", "Value" : "TheRT"},
+			  	     {"Key" : "Project", "Value" : "dzarq"},
+				     {"Key" : "Ceco", "Value" : "dzImprovements"}		]
+	   }
+	},
+	"RouteForRT" :{
+		  "Type" : "AWS::EC2::Route",
+		  "DependsOn": "TheIGW",
+		  "Properties" : {
+			"DestinationCidrBlock" : "0.0.0.0/0",
+			"GatewayId" : { "Ref": "TheIGW" },
+			"RouteTableId" : { "Ref": "TheRT" }
+		  }
+	},
+    "TheIGW" : {
+      "Type" : "AWS::EC2::InternetGateway",
+      "Properties" : {
+        "Tags" : [ {"Key" : "Name", "Value" : "MainIGW"},
+				   {"Key" : "Project", "Value" : "dzarq"},
+                   {"Key" : "Ceco", "Value" : "dzImprovements"}		]
+      }
+    },
+	"SubnetA" : {
+		  "Type" : "AWS::EC2::Subnet",
+		  "Properties" : {
+			"AvailabilityZone" : "eu-west-1a",
+			"CidrBlock" : "192.168.32.0/20",
+			"MapPublicIpOnLaunch" : "false",
+			"VpcId" : { "Ref": "MainVpc" },
+			"Tags" : [ {"Key" : "Name", "Value" : "SubnetA"},
+					   {"Key" : "Project", "Value" : "dzarq"},
+					   {"Key" : "Ceco", "Value" : "dzImprovements"}		]			
+		  }
+	},
+	"SubnetB" : {
+		  "Type" : "AWS::EC2::Subnet",
+		  "Properties" : {
+			"AvailabilityZone" : "eu-west-1b",
+			"CidrBlock" : "192.168.0.0/20",
+			"MapPublicIpOnLaunch" : "false",
+			"VpcId" : { "Ref": "MainVpc" },
+			"Tags" : [ {"Key" : "Name", "Value" : "SubnetB"},
+					   {"Key" : "Project", "Value" : "dzarq"},
+					   {"Key" : "Ceco", "Value" : "dzImprovements"}		]			
+		  }
+	},
+	"SubnetC" : {
+		  "Type" : "AWS::EC2::Subnet",
+		  "Properties" : {
+			"AvailabilityZone" : "eu-west-1c",
+			"CidrBlock" : "192.168.16.0/20",
+			"MapPublicIpOnLaunch" : "false",
+			"VpcId" : { "Ref": "MainVpc" },
+			"Tags" : [ {"Key" : "Name", "Value" : "SubnetC"},
+					   {"Key" : "Project", "Value" : "dzarq"},
+					   {"Key" : "Ceco", "Value" : "dzImprovements"}		]			
+		  }
+	}	
+  },
+
+  "Outputs" : {
+	  "VpcName" : {
+		"Description" : "Vpc Name",
+		"Value" : { "Ref" : "MainVpc" }
+		}
+	  }  
+}
