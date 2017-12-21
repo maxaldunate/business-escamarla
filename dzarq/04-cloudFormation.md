@@ -23,6 +23,8 @@ Elementos a generar dzarqImpro
 aws configure 
 Default region [eu-west-1]
 
+aws s3 cp dzarq.json s3://dzarq/cli/dzarq.json
+
 aws cloudformation create-stack --stack-name "dzarq-improvements" --template-url "https://s3-eu-west-1.amazonaws.com/dzarq/cli/dzarq.json"
 
 aws cloudformation update-stack --stack-name "dzarq-improvements" --template-url "https://s3-eu-west-1.amazonaws.com/dzarq/cli/dzarq.json"
