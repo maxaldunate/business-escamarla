@@ -3,26 +3,81 @@
 
   "Description" : "dzarquitectura project template",
 
+  "Parameters" : {
+    "ProjectName" : {
+		"Type" : "String",
+		"Description" : "Tag key 'Project' will this value.",
+		"Default" : "dzarq",
+		"AllowedPattern" : "[A-Za-z0-9]+",
+		"MinLength" : "1",
+		"MaxLength" : "10"
+    },
+    "Prefix" : {
+		"Type" : "String",
+		"Description" : "Tag key 'Name' will be prefixed with this value.",
+		"Default" : "dz",
+		"AllowedPattern" : "[A-Za-z0-9]+",
+		"MinLength" : "1",
+		"MaxLength" : "10"
+    },
+    "VpcCdir" : {
+      "Type" : "String",
+      "Description" : "IP Address range for the VPN connected VPC",
+      "MinLength": "9",
+      "MaxLength": "18",
+      "Default": "10.0.0.0/16",
+      "AllowedPattern": "(\\d{1,3})\\.(\\d{1,3})\\.(\\d{1,3})\\.(\\d{1,3})/(\\d{1,2})",
+      "ConstraintDescription": "must be a valid IP CIDR range of the form x.x.x.x/x."
+    },
+    "SubnetCidrA" : {
+      "Type" : "String",
+      "Description" : "IP Address range for the VPN connected Subnet",
+      "MinLength": "9",
+      "MaxLength": "18",
+      "Default": "10.0.0.0/24",
+      "AllowedPattern": "(\\d{1,3})\\.(\\d{1,3})\\.(\\d{1,3})\\.(\\d{1,3})/(\\d{1,2})",
+      "ConstraintDescription": "must be a valid IP CIDR range of the form x.x.x.x/x."
+    },
+    "SubnetCidrB" : {
+      "Type" : "String",
+      "Description" : "IP Address range for the VPN connected Subnet",
+      "MinLength": "9",
+      "MaxLength": "18",
+      "Default": "10.0.1.0/24",
+      "AllowedPattern": "(\\d{1,3})\\.(\\d{1,3})\\.(\\d{1,3})\\.(\\d{1,3})/(\\d{1,2})",
+      "ConstraintDescription": "must be a valid IP CIDR range of the form x.x.x.x/x."
+    },
+    "SubnetCidrC" : {
+      "Type" : "String",
+      "Description" : "IP Address range for the VPN connected Subnet",
+      "MinLength": "9",
+      "MaxLength": "18",
+      "Default": "10.0.2.0/24",
+      "AllowedPattern": "(\\d{1,3})\\.(\\d{1,3})\\.(\\d{1,3})\\.(\\d{1,3})/(\\d{1,2})",
+      "ConstraintDescription": "must be a valid IP CIDR range of the form x.x.x.x/x."
+    }	
+  },
+  
   "Resources" : {
     "MainVpc" : {
       "Type" : "AWS::EC2::VPC",
       "Properties" : {
-        "CidrBlock" : "10.0.0.0/16",
+        "CidrBlock" : {"Ref": "VpcCdir"},
         "EnableDnsSupport" : "true",
         "EnableDnsHostnames" : "false",
         "InstanceTenancy" : "default",
-        "Tags" : [ {"Key" : "Name", "Value" : "MainVpc"},
-				   {"Key" : "Project", "Value" : "dzarq"},
-                   {"Key" : "Ceco", "Value" : "dzImprovements"}		]
+        "Tags" : [ {"Key" : "Name", "Value" : {"Fn::Join" : [ "-", [ {"Ref":"Prefix"}, "vpc" ] ]}},
+				   {"Key" : "Application", "Value" : { "Ref" : "AWS::StackName" } },
+				   {"Key" : "Project", "Value" : {"Ref":"ProjectName"}} ]
   		   }
   	},
 	"TheRT" : {
 	   "Type" : "AWS::EC2::RouteTable",
 	   "Properties" : {
 		  "VpcId" : { "Ref": "MainVpc" },
-		  "Tags" : [ {"Key" : "Name", "Value" : "TheRT"},
-			  	     {"Key" : "Project", "Value" : "dzarq"},
-				     {"Key" : "Ceco", "Value" : "dzImprovements"}		]
+		  "Tags" : [ {"Key" : "Name", "Value" : {"Fn::Join" : [ "-", [ {"Ref":"Prefix"}, "rt" ] ]}},
+					 {"Key" : "Application", "Value" : { "Ref" : "AWS::StackName" } },
+			  	     {"Key" : "Project", "Value" : {"Ref":"ProjectName"}}]
 	   }
 	},
 	"RouteForRT" :{
@@ -37,9 +92,9 @@
     "TheIGW" : {
       "Type" : "AWS::EC2::InternetGateway",
       "Properties" : {
-        "Tags" : [ {"Key" : "Name", "Value" : "TheIGW"},
-				   {"Key" : "Project", "Value" : "dzarq"},
-                   {"Key" : "Ceco", "Value" : "dzImprovements"}		]
+        "Tags" : [ {"Key" : "Name", "Value" : {"Fn::Join" : [ "-", [ {"Ref":"Prefix"}, "igw" ] ]}},
+		           {"Key" : "Application", "Value" : { "Ref" : "AWS::StackName" } },
+				   {"Key" : "Project", "Value" : {"Ref":"ProjectName"}}]
       }
     },
 	"VpcToIgwAttachement":{
@@ -53,45 +108,45 @@
 		  "Type" : "AWS::EC2::Subnet",
 		  "Properties" : {
 			"AvailabilityZone" : "eu-west-1a",
-			"CidrBlock" : "10.0.0.0/24",
+			"CidrBlock" : {"Ref": "SubnetCidrA"},
 			"MapPublicIpOnLaunch" : "false",
 			"VpcId" : { "Ref": "MainVpc" },
-			"Tags" : [ {"Key" : "Name", "Value" : "SubnetA"},
-					   {"Key" : "Project", "Value" : "dzarq"},
-					   {"Key" : "Ceco", "Value" : "dzImprovements"}		]			
+			"Tags" : [ {"Key" : "Name", "Value" : {"Fn::Join" : [ "-", [ {"Ref":"Prefix"}, "subA" ] ]}},
+					   {"Key" : "Application", "Value" : { "Ref" : "AWS::StackName" } },
+					   {"Key" : "Project", "Value" : {"Ref":"ProjectName"}}]
 		  }
 	},
 	"SubnetB" : {
 		  "Type" : "AWS::EC2::Subnet",
 		  "Properties" : {
 			"AvailabilityZone" : "eu-west-1b",
-			"CidrBlock" : "10.0.1.0/24",
+			"CidrBlock" : {"Ref": "SubnetCidrB"},
 			"MapPublicIpOnLaunch" : "false",
 			"VpcId" : { "Ref": "MainVpc" },
-			"Tags" : [ {"Key" : "Name", "Value" : "SubnetB"},
-					   {"Key" : "Project", "Value" : "dzarq"},
-					   {"Key" : "Ceco", "Value" : "dzImprovements"}		]			
+			"Tags" : [ {"Key" : "Name", "Value" : {"Fn::Join" : [ "-", [ {"Ref":"Prefix"}, "subB" ] ]}},
+					   {"Key" : "Application", "Value" : { "Ref" : "AWS::StackName" } },
+					   {"Key" : "Project", "Value" : {"Ref":"ProjectName"}}]
 		  }
 	},
 	"SubnetC" : {
 		  "Type" : "AWS::EC2::Subnet",
 		  "Properties" : {
 			"AvailabilityZone" : "eu-west-1c",
-			"CidrBlock" : "10.0.2.0/24",
+			"CidrBlock" : {"Ref": "SubnetCidrC"},
 			"MapPublicIpOnLaunch" : "false",
 			"VpcId" : { "Ref": "MainVpc" },
-			"Tags" : [ {"Key" : "Name", "Value" : "SubnetC"},
-					   {"Key" : "Project", "Value" : "dzarq"},
-					   {"Key" : "Ceco", "Value" : "dzImprovements"}		]
+			"Tags" : [ {"Key" : "Name", "Value" : {"Fn::Join" : [ "-", [ {"Ref":"Prefix"}, "subC" ] ]}},
+					   {"Key" : "Application", "Value" : { "Ref" : "AWS::StackName" } },
+					   {"Key" : "Project", "Value" : {"Ref":"ProjectName"}}]
 		  }
 	},
 	"NetworkAcl" : {
 		"Type" : "AWS::EC2::NetworkAcl",
 		"Properties" : {
 		  "VpcId" : { "Ref": "MainVpc" },
-		  "Tags" : [ {"Key" : "Name", "Value" : "NetworkAcl"},
-				     {"Key" : "Project", "Value" : "dzarq"},
-				     {"Key" : "Ceco", "Value" : "dzImprovements"}		]		  
+		  "Tags" : [ {"Key" : "Name", "Value" : {"Fn::Join" : [ "-", [ {"Ref":"Prefix"}, "acl" ] ]}},
+				     {"Key" : "Application", "Value" : { "Ref" : "AWS::StackName" } },
+				     {"Key" : "Project", "Value" : {"Ref":"ProjectName"}}]
 		}	
 	},
 	"NetworkAclEntry1" : {
@@ -194,18 +249,26 @@
 					"CidrIp" : "0.0.0.0/0"
 				}			
 			],
-			"Tags" : [ {"Key" : "Name", "Value" : "WebServeSG"},
-					   {"Key" : "Project", "Value" : "dzarq"},
-					   {"Key" : "Ceco", "Value" : "dzImprovements"}]
+			"Tags" : [ {"Key" : "Name", "Value" : {"Fn::Join" : [ "-", [ {"Ref":"Prefix"}, "web-sg" ] ]}},
+					   {"Key" : "Application", "Value" : { "Ref" : "AWS::StackName" } },
+					   {"Key" : "Project", "Value" : {"Ref":"ProjectName"}}]
 		}	
 	}
 	
   },
 
   "Outputs" : {
-	  "VpcName" : {
-		"Description" : "Vpc Name",
+	  "Vpc" : {
+		"Description" : "Vpc Id",
 		"Value" : { "Ref" : "MainVpc" }
-		}
-	  }  
+	  },
+	  "DefaultNetworkAcl" : {
+		"Description" : "Default Network ACL Id",
+		"Value" : { "Fn::GetAtt" : [ "MainVpc", "DefaultNetworkAcl" ]}
+	  },
+	  "DefaultSecurityGroup" : {
+		"Description" : "Default Security Group Id",
+		"Value" : { "Fn::GetAtt" : [ "MainVpc", "DefaultSecurityGroup" ]}
+	  }
+  }  
 }
