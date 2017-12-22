@@ -29,7 +29,19 @@ aws cloudformation create-stack --stack-name "dzarq-improvements" --template-url
 
 aws cloudformation update-stack --stack-name "dzarq-improvements" --template-url "https://s3-eu-west-1.amazonaws.com/dzarq/cli/dzarq.json"
 
+aws cloudformation delete-stack --stack-name "dzarq-improvements"
+
 ```
 
 AWSCloudFormationFull
+
+
+
+Parameters:
+Values for Tags
+VPC & SUbnet CIDRs
+
+
+
+
 
