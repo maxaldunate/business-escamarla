@@ -2,9 +2,8 @@
 
 aws cloudformation create-stack^
   --stack-name "dzarq-improvements-servers"^
-  --template-body file://servers.json^
+  --template-body file://ddbb.json^
   --parameters ParameterKey="ProjectName",ParameterValue="dzarq"^
                ParameterKey="Prefix",ParameterValue="dz"^
-			   ParameterKey="VpcId",ParameterValue="vpc-46ae4b20"^
-			   ParameterKey="KeyName",ParameterValue="kp-wordpress-instance"
+			   ParameterKey="DBName",ParameterValue="" ^
 			   
