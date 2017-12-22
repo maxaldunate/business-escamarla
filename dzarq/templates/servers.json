@@ -1,0 +1,31 @@
+{
+	"AWSTemplateFormatVersion" : "2010-09-09",
+
+	"Description" : "Servers for Web template",
+
+	"Parameters" : {
+		"ProjectName" : {
+			"Type" : "String",
+			"Description" : "Tag key 'Project' will this value.",
+			"AllowedPattern" : "[A-Za-z0-9]+",
+			"MinLength" : "1",
+			"MaxLength" : "10"
+		},
+		"Prefix" : {
+			"Type" : "String",
+			"Description" : "Tag key 'Name' will be prefixed with this value.",
+			"AllowedPattern" : "[A-Za-z0-9]+",
+			"MinLength" : "1",
+			"MaxLength" : "10"
+		},
+		"VpcId" : {
+			"Type" : "String",
+			"Description" : "VPC Id for Servers",
+		}	
+	},
+
+	"Resources" : {
+
+	}
+
+}
