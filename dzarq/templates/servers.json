@@ -1,31 +1,82 @@
 {
-	"AWSTemplateFormatVersion" : "2010-09-09",
+  "AWSTemplateFormatVersion": "2010-09-09",
 
-	"Description" : "Servers for Web template",
+  "Description": "Servers for Web template",
 
-	"Parameters" : {
-		"ProjectName" : {
-			"Type" : "String",
-			"Description" : "Tag key 'Project' will this value.",
-			"AllowedPattern" : "[A-Za-z0-9]+",
-			"MinLength" : "1",
-			"MaxLength" : "10"
-		},
-		"Prefix" : {
-			"Type" : "String",
-			"Description" : "Tag key 'Name' will be prefixed with this value.",
-			"AllowedPattern" : "[A-Za-z0-9]+",
-			"MinLength" : "1",
-			"MaxLength" : "10"
-		},
-		"VpcId" : {
-			"Type" : "String",
-			"Description" : "VPC Id for Servers",
-		}	
-	},
+  "Parameters": {
+    "ProjectName": {
+      "Type": "String",
+      "Description": "Tag key 'Project' will this value.",
+      "AllowedPattern": "[A-Za-z0-9]+",
+      "MinLength": "1",
+      "MaxLength": "10"
+    },
+    "Prefix": {
+      "Type": "String",
+      "Description": "Tag key 'Name' will be prefixed with this value.",
+      "AllowedPattern": "[A-Za-z0-9]+",
+      "MinLength": "1",
+      "MaxLength": "10"
+    },
+    "VpcId": {
+      "Type": "AWS::EC2::VPC::Id",
+      "Description": "VpcId of your existing VPC",
+      "ConstraintDescription": "must be the VPC Id of an existing Virtual Private Cloud."
+    }
+  },
 
-	"Resources" : {
-
-	}
-
+  "Resources": {
+    "WebServeSG": {
+      "Type": "AWS::EC2::SecurityGroup",
+      "Properties": {
+        "GroupName": "WebServeSG",
+        "GroupDescription": "SG for web Servers. HTTP+S & SSH",
+        "VpcId": {
+          "Ref": "VpcId"
+        },
+        "SecurityGroupIngress": [{
+            "IpProtocol": "tcp",
+            "FromPort": "22",
+            "ToPort": "22",
+            "CidrIp": "0.0.0.0/0"
+          }, {
+            "IpProtocol": "tcp",
+            "FromPort": "443",
+            "ToPort": "443",
+            "CidrIp": "0.0.0.0/0"
+          }, {
+            "IpProtocol": "tcp",
+            "FromPort": "80",
+            "ToPort": "80",
+            "CidrIp": "0.0.0.0/0"
+          }
+        ],
+        "SecurityGroupEgress": [{
+            "IpProtocol": "-1",
+            "CidrIp": "0.0.0.0/0"
+          }
+        ],
+        "Tags": [{
+            "Key": "Name",
+            "Value": {
+              "Fn::Join": ["-", [{
+                    "Ref": "Prefix"
+                  }, "web-sg"]]
+            }
+          }, {
+            "Key": "Application",
+            "Value": {
+              "Ref": "AWS::StackName"
+            }
+          }, {
+            "Key": "Project",
+            "Value": {
+              "Ref": "ProjectName"
+            }
+          }
+        ]
+      }
+    },
+    "": {}
+  }
 }
