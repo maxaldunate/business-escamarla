@@ -5,4 +5,4 @@ aws cloudformation create-stack^
   --template-body file://servers.json^
   --parameters ParameterKey="ProjectName",ParameterValue="dzarq"^
                ParameterKey="Prefix",ParameterValue="dz"^
-			   ParameterKey="VpcId",ParameterValue=""
+			   ParameterKey="VpcId",ParameterValue="vpc-4dad482b"
