@@ -1,0 +1,61 @@
+{
+  "AWSTemplateFormatVersion": "2010-09-09",
+
+  "Description": "RDS MySql for wordpress template",
+
+  "Parameters": {
+    "ProjectName": {
+      "Type": "String",
+      "Description": "Tag key 'Project' will this value.",
+      "AllowedPattern": "[A-Za-z0-9]+",
+      "MinLength": "1",
+      "MaxLength": "10"
+    },
+    "Prefix": {
+      "Type": "String",
+      "Description": "Tag key 'Name' will be prefixed with this value.",
+      "AllowedPattern": "[A-Za-z0-9]+",
+      "MinLength": "1",
+      "MaxLength": "10"
+    },
+    "DBName": {
+      "Default": "MyDatabase",
+      "Description" : "MySQL database name",
+      "Type": "String",
+      "MinLength": "1",
+      "MaxLength": "64",
+      "AllowedPattern" : "[a-zA-Z][a-zA-Z0-9]*",
+      "ConstraintDescription" : "must begin with a letter and contain only alphanumeric characters."
+    },
+    "DBUser": {
+      "NoEcho": "true",
+      "Description" : "Username for MySQL database access",
+      "Type": "String",
+      "MinLength": "1",
+      "MaxLength": "16",
+      "AllowedPattern" : "[a-zA-Z][a-zA-Z0-9]*",
+      "ConstraintDescription" : "must begin with a letter and contain only alphanumeric characters."
+    },
+    "DBPassword": {
+      "NoEcho": "true",
+      "Description" : "Password for MySQL database access",
+      "Type": "String",
+      "MinLength": "1",
+      "MaxLength": "41",
+      "AllowedPattern" : "[a-zA-Z0-9]*",
+      "ConstraintDescription" : "must contain only alphanumeric characters."
+    },
+    "DBRootPassword": {
+      "NoEcho": "true",
+      "Description" : "Root password for MySQL",
+      "Type": "String",
+      "MinLength": "1",
+      "MaxLength": "41",
+      "AllowedPattern" : "[a-zA-Z0-9]*",
+      "ConstraintDescription" : "must contain only alphanumeric characters."
+    }
+  },
+
+  "Resources": {
+  }
+}

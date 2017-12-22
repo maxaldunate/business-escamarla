@@ -22,61 +22,64 @@
       "Type": "AWS::EC2::VPC::Id",
       "Description": "VpcId of your existing VPC",
       "ConstraintDescription": "must be the VPC Id of an existing Virtual Private Cloud."
-    }
+    },
+    "KeyName" : {
+      "Description" : "Name of an existing EC2 KeyPair to enable SSH access to the instances",
+      "Type" : "AWS::EC2::KeyPair::KeyName",
+      "MinLength": "1",
+      "MaxLength": "255",
+      "AllowedPattern" : "[\\x20-\\x7E]*",
+      "ConstraintDescription" : "can contain only ASCII characters."
+    }	
   },
 
   "Resources": {
+  
     "WebServeSG": {
       "Type": "AWS::EC2::SecurityGroup",
       "Properties": {
         "GroupName": "WebServeSG",
         "GroupDescription": "SG for web Servers. HTTP+S & SSH",
-        "VpcId": {
-          "Ref": "VpcId"
-        },
-        "SecurityGroupIngress": [{
-            "IpProtocol": "tcp",
-            "FromPort": "22",
-            "ToPort": "22",
-            "CidrIp": "0.0.0.0/0"
-          }, {
-            "IpProtocol": "tcp",
-            "FromPort": "443",
-            "ToPort": "443",
-            "CidrIp": "0.0.0.0/0"
-          }, {
-            "IpProtocol": "tcp",
-            "FromPort": "80",
-            "ToPort": "80",
-            "CidrIp": "0.0.0.0/0"
-          }
-        ],
-        "SecurityGroupEgress": [{
-            "IpProtocol": "-1",
-            "CidrIp": "0.0.0.0/0"
-          }
-        ],
-        "Tags": [{
-            "Key": "Name",
-            "Value": {
-              "Fn::Join": ["-", [{
-                    "Ref": "Prefix"
-                  }, "web-sg"]]
-            }
-          }, {
-            "Key": "Application",
-            "Value": {
-              "Ref": "AWS::StackName"
-            }
-          }, {
-            "Key": "Project",
-            "Value": {
-              "Ref": "ProjectName"
-            }
-          }
-        ]
+        "VpcId": {"Ref": "VpcId"},
+        "SecurityGroupIngress": [
+		  {"IpProtocol": "tcp","FromPort": "22","ToPort": "22","CidrIp": "0.0.0.0/0"}, 
+		  {"IpProtocol": "tcp","FromPort": "443","ToPort": "443","CidrIp": "0.0.0.0/0"},
+		  {"IpProtocol": "tcp","FromPort": "80","ToPort": "80","CidrIp": "0.0.0.0/0"}],
+        "SecurityGroupEgress": [
+		  {"IpProtocol": "-1","CidrIp": "0.0.0.0/0"}],
+        "Tags": [
+		  {"Key": "Name","Value": {"Fn::Join": ["-", [{"Ref": "Prefix"}, "web-sg"]]}},
+          {"Key": "Application","Value": {"Ref": "AWS::StackName"}},
+          {"Key": "Project","Value": {"Ref": "ProjectName"}}]
       }
+    }
+  },
+  
+  "Mappings" : {
+    "AWSInstanceType2Arch" : {
+      "t1.micro"    : { "Arch" : "PV64"   },
+      "t2.nano"     : { "Arch" : "HVM64"  },
+      "t2.micro"    : { "Arch" : "HVM64"  },
+      "t2.small"    : { "Arch" : "HVM64"  },
+      "t2.medium"   : { "Arch" : "HVM64"  },
+      "t2.large"    : { "Arch" : "HVM64"  }
     },
-    "": {}
-  }
+    "AWSInstanceType2NATArch" : {
+      "t1.micro"    : { "Arch" : "NATPV64"   },
+      "t2.nano"     : { "Arch" : "NATHVM64"  },
+      "t2.micro"    : { "Arch" : "NATHVM64"  },
+      "t2.small"    : { "Arch" : "NATHVM64"  },
+      "t2.medium"   : { "Arch" : "NATHVM64"  },
+      "t2.large"    : { "Arch" : "NATHVM64"  }
+    },
+    "AWSRegionArch2AMI" : {
+      "us-east-1"        : {"PV64" : "ami-2a69aa47", "HVM64" : "ami-6869aa05", "HVMG2" : "ami-3353c649"},
+      "us-west-2"        : {"PV64" : "ami-7f77b31f", "HVM64" : "ami-7172b611", "HVMG2" : "ami-58ce1220"},
+      "us-west-1"        : {"PV64" : "ami-a2490dc2", "HVM64" : "ami-31490d51", "HVMG2" : "ami-62ad9502"},
+      "eu-west-1"        : {"PV64" : "ami-4cdd453f", "HVM64" : "ami-f9dd458a", "HVMG2" : "ami-41bc0a38"},
+      "eu-west-2"        : {"PV64" : "NOT_SUPPORTED", "HVM64" : "ami-886369ec", "HVMG2" : "NOT_SUPPORTED"},
+      "eu-west-3"        : {"PV64" : "NOT_SUPPORTED", "HVM64" : "NOT_SUPPORTED", "HVMG2" : "NOT_SUPPORTED"},
+      "eu-central-1"     : {"PV64" : "ami-6527cf0a", "HVM64" : "ami-ea26ce85", "HVMG2" : "ami-b50d8fda"}
+    }
+  },
 }
