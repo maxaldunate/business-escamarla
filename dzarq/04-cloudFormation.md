@@ -31,6 +31,10 @@ aws cloudformation update-stack --stack-name "dzarq-improvements" --template-url
 
 aws cloudformation delete-stack --stack-name "dzarq-improvements"
 
+aws cloudformation create-stack --stack-name "dzarq-improvements" 
+  --template-body file://dzarq.json 
+  --parameters ParameterKey=Prefix,ParameterValue=dz,UsePreviousValue=false,ResolvedValue=dz
+
 ```
 
 AWSCloudFormationFull
