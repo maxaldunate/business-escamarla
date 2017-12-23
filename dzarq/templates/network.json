@@ -66,25 +66,9 @@
         "EnableDnsSupport": "true",
         "EnableDnsHostnames": "false",
         "InstanceTenancy": "default",
-        "Tags": [{
-            "Key": "Name",
-            "Value": {
-              "Fn::Join": ["-", [{
-                    "Ref": "Prefix"
-                  }, "vpc"]]
-            }
-          }, {
-            "Key": "Application",
-            "Value": {
-              "Ref": "AWS::StackName"
-            }
-          }, {
-            "Key": "Project",
-            "Value": {
-              "Ref": "ProjectName"
-            }
-          }
-        ]
+        "Tags": [{"Key": "Name","Value": {"Fn::Join": ["-", [{"Ref": "Prefix"}, "vpc"]]}},
+		         {"Key": "Application","Value": {"Ref": "AWS::StackName"}},
+				 {"Key": "Project","Value": {"Ref": "ProjectName"}}]
       }
     },
     "TheRT": {
@@ -397,21 +381,16 @@
 
   "Outputs": {
     "Vpc": {
-      "Description": "Vpc Id",
-      "Value": {
-        "Ref": "MainVpc"
-      }
+	  "Value": {"Ref": "MainVpc"},
+      "Description": "Vpc Id"
     },
     "DefaultNetworkAcl": {
-      "Description": "Default Network ACL Id",
-      "Value": {
-        "Fn::GetAtt": ["MainVpc", "DefaultNetworkAcl"]
-      }
+	  "Value": {"Fn::GetAtt": ["MainVpc", "DefaultNetworkAcl"]},
+      "Description": "Default Network ACL Id"
     },
     "DefaultSecurityGroup": {
-      "Description": "Default Security Group Id",
-      "Value": {
-        "Fn::GetAtt": ["MainVpc", "DefaultSecurityGroup"]
+      "Value": {"Fn::GetAtt": ["MainVpc", "DefaultSecurityGroup"],
+	  "Description": "Default Security Group Id"      
       }
     }
   }

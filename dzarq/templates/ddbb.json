@@ -17,6 +17,12 @@
       "AllowedPattern": "[A-Za-z0-9]+",
       "MinLength": "1",
       "MaxLength": "10"
+    },	
+    "AZone": {
+      "Type": "String",
+      "Description": "The availability zone for de db instance",
+      "MinLength": "1",
+      "MaxLength": "10"
     },
     "DBName": {
       "Default": "MyDatabase",
@@ -32,7 +38,7 @@
       "Description" : "Username for MySQL database access",
       "Type": "String",
       "MinLength": "1",
-      "MaxLength": "16",
+      "MaxLength": "63",
       "AllowedPattern" : "[a-zA-Z][a-zA-Z0-9]*",
       "ConstraintDescription" : "must begin with a letter and contain only alphanumeric characters."
     },
@@ -40,16 +46,7 @@
       "NoEcho": "true",
       "Description" : "Password for MySQL database access",
       "Type": "String",
-      "MinLength": "1",
-      "MaxLength": "41",
-      "AllowedPattern" : "[a-zA-Z0-9]*",
-      "ConstraintDescription" : "must contain only alphanumeric characters."
-    },
-    "DBRootPassword": {
-      "NoEcho": "true",
-      "Description" : "Root password for MySQL",
-      "Type": "String",
-      "MinLength": "1",
+      "MinLength": "8",
       "MaxLength": "41",
       "AllowedPattern" : "[a-zA-Z0-9]*",
       "ConstraintDescription" : "must contain only alphanumeric characters."
@@ -57,5 +54,43 @@
   },
 
   "Resources": {
+    "DbMySqlInstance" : {
+      "Type" : "AWS::RDS::DBInstance",
+      "Properties" : {
+        "AllocatedStorage" : "20",
+        "AllowMajorVersionUpgrade" : "false",
+        "AutoMinorVersionUpgrade" : "true",
+        "AvailabilityZone" : {"Ref" : "AZone"},
+        "BackupRetentionPeriod" : "2",
+        "CopyTagsToSnapshot" : "true",
+        "DBInstanceClass" : "db.t2.micro",
+		"DBName" : {"Ref" : "DBName"},
+        "Engine" : "mysql",
+        "EngineVersion" : "5.6.37",
+        "LicenseModel" : "general-public-license",
+        "MasterUsername" : { "Ref" : "DBUser"},
+        "MasterUserPassword" : { "Ref" : "DBPassword"},
+        "MonitoringInterval" : "0",
+        "MultiAZ" : "false",
+        "Port" : "3306",
+        "PreferredBackupWindow" : "03:00-03:30",
+        "PreferredMaintenanceWindow" : "wed:04:00-wed:04:30",
+        "PubliclyAccessible" : "true",
+        "StorageEncrypted" : "false",
+        "StorageType" : "standard",
+        "Tags": [{"Key": "Name","Value": {"Fn::Join": ["-", [{"Ref": "Prefix"}, "rdsMySql"]]}},
+	             {"Key": "Application","Value": {"Ref": "AWS::StackName"}},
+		         {"Key": "Project","Value": {"Ref": "ProjectName"}}]
+	    
+      },
+	  "DeletionPolicy" : "Delete"
+    }
+  },
+  
+  "Outputs": {
+    "EndpointAddress": {
+	  "Value": {"Fn::GetAtt": ["DbMySqlInstance", "Endpoint.Address"]},
+      "Description": "Db Name. MAIN NAME of the instance"
+    }
   }
 }

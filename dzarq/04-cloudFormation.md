@@ -45,7 +45,32 @@ Parameters:
 Values for Tags
 VPC & SUbnet CIDRs
 
+```
+my sql root password at ec2 instance 'bobcIt0'
 
+mysql -u root -p
+CREATE USER 'arnoldo'@'localhost' IDENTIFIED BY 'rab4nItos';
+CREATE DATABASE `db363458885`;
+GRANT ALL PRIVILEGES ON `db363458885`.* TO "arnoldo"@"localhost";
+FLUSH PRIVILEGES;
 
+aws s3 cp s3://dzarq/dzarq.mysql.zip dzarq.mysql.zip
 
+mysql -h [hostname] -u [uname] -p[pass] [db_to_restore] < [backupfile.sql]
+
+mysql -h localhost -u arnoldo -p db363458885 < 1and1.arquitecta.db363458885.sql
+
+```
+
+IMPORTANT TASKS:
+- Install again MySql in dzarq EC2 instance
+- Connect with localhost again. But will be easy change connection between localhost and RDS
+- Create the BBDD con template
+- In separate file restore from backup to RDS (bat/sh file)
+- Connect to new RDS
+- Create a EC2 Template at the end
+- In bat/sh file with ddbb restore add restore wordpress file to EC2
+
+OJO
+Al crear server.json hay que asociarle el rds-SG creado en el template del rds
 
