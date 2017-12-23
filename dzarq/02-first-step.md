@@ -47,7 +47,7 @@
   - [AWS Tutorial URL](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/hosting-wordpress.html)
 
 * Restore Database Backup
-  - db user/dzarq-user-db
+  - db user/arnoldo
   - your_strong_password/rab4nItos
   - database/db363458885
   - with zipped file
