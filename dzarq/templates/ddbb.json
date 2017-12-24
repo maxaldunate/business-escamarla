@@ -17,7 +17,7 @@
       "AllowedPattern": "[A-Za-z0-9]+",
       "MinLength": "1",
       "MaxLength": "10"
-    },	
+    },
     "AZone": {
       "Type": "String",
       "Description": "The availability zone for de db instance",
@@ -56,6 +56,7 @@
   "Resources": {
     "DbMySqlInstance" : {
       "Type" : "AWS::RDS::DBInstance",
+	  "DeletionPolicy" : "Delete",
       "Properties" : {
         "AllocatedStorage" : "20",
         "AllowMajorVersionUpgrade" : "false",
@@ -77,13 +78,12 @@
         "PreferredMaintenanceWindow" : "wed:04:00-wed:04:30",
         "PubliclyAccessible" : "true",
         "StorageEncrypted" : "false",
-        "StorageType" : "standard",
+        "StorageType" : "gp2",
         "Tags": [{"Key": "Name","Value": {"Fn::Join": ["-", [{"Ref": "Prefix"}, "rdsMySql"]]}},
 	             {"Key": "Application","Value": {"Ref": "AWS::StackName"}},
 		         {"Key": "Project","Value": {"Ref": "ProjectName"}}]
 	    
-      },
-	  "DeletionPolicy" : "Delete"
+      }
     }
   },
   

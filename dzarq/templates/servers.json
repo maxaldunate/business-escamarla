@@ -18,6 +18,12 @@
       "MinLength": "1",
       "MaxLength": "10"
     },
+    "AZone": {
+      "Type": "String",
+      "Description": "The availability zone for de db instance",
+      "MinLength": "1",
+      "MaxLength": "10"
+    },	
     "VpcId": {
       "Type": "AWS::EC2::VPC::Id",
       "Description": "VpcId of your existing VPC",
@@ -34,6 +40,20 @@
   },
 
   "Resources": {
+  
+    "WebServer" : {
+      "Type" : "AWS::EC2::Instance", 
+	  "DeletionPolicy" : "Delete",
+      "Properties" : {
+        "ImageId" : "ami-a4f177dd",
+		"AvailabilityZone" : {"Ref": "AZone"},
+        "KeyName" : { "Ref" : "KeyName" },
+        "InstanceType" : "t2.micro",
+        "SecurityGroups" : [{ "Ref" : "WebServeSG" }],
+        "BlockDeviceMappings" : [{
+		  "DeviceName" : "/dev/sda1",
+		  "Ebs" : { "VolumeSize" : "8" } }]}
+    },  
   
     "WebServeSG": {
       "Type": "AWS::EC2::SecurityGroup",
@@ -81,5 +101,5 @@
       "eu-west-3"        : {"PV64" : "NOT_SUPPORTED", "HVM64" : "NOT_SUPPORTED", "HVMG2" : "NOT_SUPPORTED"},
       "eu-central-1"     : {"PV64" : "ami-6527cf0a", "HVM64" : "ami-ea26ce85", "HVMG2" : "ami-b50d8fda"}
     }
-  },
+  }
 }

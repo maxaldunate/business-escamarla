@@ -1,7 +1,7 @@
 @echo off
 
 aws cloudformation create-stack^
-  --stack-name "dzarq-improvements-network"^
+  --stack-name "dz-impro-network"^
   --template-body file://network.json^
   --parameters ParameterKey="ProjectName",ParameterValue="dzarq"^
                ParameterKey="Prefix",ParameterValue="dz"^
