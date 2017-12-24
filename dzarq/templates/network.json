@@ -389,9 +389,8 @@
       "Description": "Default Network ACL Id"
     },
     "DefaultSecurityGroup": {
-      "Value": {"Fn::GetAtt": ["MainVpc", "DefaultSecurityGroup"],
+      "Value": {"Fn::GetAtt": ["MainVpc", "DefaultSecurityGroup"]},
 	  "Description": "Default Security Group Id"      
-      }
     }
   }
 }

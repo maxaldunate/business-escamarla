@@ -73,4 +73,24 @@ IMPORTANT TASKS:
 
 OJO
 Al crear server.json hay que asociarle el rds-SG creado en el template del rds
+aws cloudformation validate-template
+[JSONLint] (http://jsonlint.com)
 
+
+
+
+"HardDisk" : {
+  "Type":"AWS::EC2::Volume",
+  "DeletionPolicy" : "Delete",
+  "Properties" : {
+	"AutoEnableIO" : "false",
+	"AvailabilityZone" : {"Ref": "AZone"},
+	"Encrypted" : "false",
+	"Size" : "8",
+	"SnapshotId" : "snap-01ae5a2ddfd114ed5",
+	"VolumeType" : "gp2",
+	"Tags": [{"Key": "Name","Value": {"Fn::Join": ["-", [{"Ref": "Prefix"}, "volume"]]}},
+			 {"Key": "Application","Value": {"Ref": "AWS::StackName"}},
+			 {"Key": "Project","Value": {"Ref": "ProjectName"}}]		
+  }
+},

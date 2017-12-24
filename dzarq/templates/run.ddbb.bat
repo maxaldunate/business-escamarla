@@ -1,7 +1,7 @@
 @echo off
 
 aws cloudformation create-stack^
-  --stack-name "dzarq-rds"^
+  --stack-name "dz-rds"^
   --template-body file://ddbb.json^
   --parameters ParameterKey="ProjectName",ParameterValue="dzarq"^
                ParameterKey="Prefix",ParameterValue="dz"^
