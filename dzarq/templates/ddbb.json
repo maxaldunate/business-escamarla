@@ -17,6 +17,21 @@
       "AllowedPattern": "[A-Za-z0-9]+",
       "MinLength": "1",
       "MaxLength": "10"
+    },	
+    "VpcId": {
+      "Type": "AWS::EC2::VPC::Id",
+      "Description": "VpcId of your existing VPC",
+      "ConstraintDescription": "must be the VPC Id of an existing Virtual Private Cloud."
+    },	
+    "RdsAccessSecurityGroup": {
+      "Type": "AWS::EC2::SecurityGroup::Id",
+      "Description": "Security Group for access to RDS MySql",
+      "ConstraintDescription": "must be the SG Id of an existing Virtual Private Cloud."
+    },
+    "SubnetsIds" : {
+      "Type" : "CommaDelimitedList",
+      "Description" : "The list of SubnetIds in your Virtual Private Cloud (VPC)",
+      "ConstraintDescription" : "must be a list of at least two existing subnets associated with at least two different availability zones. They should be residing in the selected Virtual Private Cloud."
     },
     "AZone": {
       "Type": "String",
@@ -54,6 +69,18 @@
   },
 
   "Resources": {
+  
+    "SqlDBSubnetGroup" : {
+      "Type" : "AWS::RDS::DBSubnetGroup",
+      "Properties" : {
+        "DBSubnetGroupDescription" : "SqlDBSubnetGroup",
+        "SubnetIds" : {"Ref": "SubnetsIds"},
+        "Tags": [{"Key": "Name","Value": {"Fn::Join": ["-", [{"Ref": "Prefix"}, "rdsMySql"]]}},
+                 {"Key": "Application","Value": {"Ref": "AWS::StackName"}},
+                 {"Key": "Project","Value": {"Ref": "ProjectName"}}]
+      }
+    },
+	
     "DbMySqlInstance" : {
       "Type" : "AWS::RDS::DBInstance",
 	  "DeletionPolicy" : "Delete",
@@ -66,6 +93,7 @@
         "CopyTagsToSnapshot" : "true",
         "DBInstanceClass" : "db.t2.micro",
 		"DBName" : {"Ref" : "DBName"},
+		"DBSubnetGroupName" : {"Ref" : "SqlDBSubnetGroup"},
         "Engine" : "mysql",
         "EngineVersion" : "5.6.37",
         "LicenseModel" : "general-public-license",
@@ -79,12 +107,13 @@
         "PubliclyAccessible" : "true",
         "StorageEncrypted" : "false",
         "StorageType" : "gp2",
+		"VPCSecurityGroups" : [ {"Ref" : "RdsAccessSecurityGroup"} ],
         "Tags": [{"Key": "Name","Value": {"Fn::Join": ["-", [{"Ref": "Prefix"}, "rdsMySql"]]}},
 	             {"Key": "Application","Value": {"Ref": "AWS::StackName"}},
 		         {"Key": "Project","Value": {"Ref": "ProjectName"}}]
 	    
       }
-    }
+    }	
   },
   
   "Outputs": {
@@ -92,5 +121,5 @@
 	  "Value": {"Fn::GetAtt": ["DbMySqlInstance", "Endpoint.Address"]},
       "Description": "Db Name. MAIN NAME of the instance"
     }
-  }
+  }  
 }
