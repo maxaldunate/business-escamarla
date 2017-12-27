@@ -28,6 +28,11 @@
       "Type": "AWS::EC2::VPC::Id",
       "Description": "VpcId of your existing VPC",
       "ConstraintDescription": "must be the VPC Id of an existing Virtual Private Cloud."
+    },	
+    "WebServerSecurityGroup": {
+      "Type": "AWS::EC2::SecurityGroup::Id",
+      "Description": "Security Group for access to RDS MySql",
+      "ConstraintDescription": "must be the SG Id of an existing Virtual Private Cloud."
     },
     "KeyName" : {
       "Description" : "Name of an existing EC2 KeyPair to enable SSH access to the instances",
@@ -49,30 +54,12 @@
 		"AvailabilityZone" : {"Ref": "AZone"},
         "KeyName" : { "Ref" : "KeyName" },
         "InstanceType" : "t2.micro",
-        "SecurityGroups" : [{ "Ref" : "WebServeSG" }],
+        "SecurityGroups" : [ {"Ref" : "WebServerSecurityGroup"} ],
         "BlockDeviceMappings" : [{
 		  "DeviceName" : "/dev/sda1",
 		  "Ebs" : { "VolumeSize" : "8" } }]}
-    },  
-  
-    "WebServeSG": {
-      "Type": "AWS::EC2::SecurityGroup",
-      "Properties": {
-        "GroupName": "WebServeSG",
-        "GroupDescription": "SG for web Servers. HTTP+S & SSH",
-        "VpcId": {"Ref": "VpcId"},
-        "SecurityGroupIngress": [
-		  {"IpProtocol": "tcp","FromPort": "22","ToPort": "22","CidrIp": "0.0.0.0/0"}, 
-		  {"IpProtocol": "tcp","FromPort": "443","ToPort": "443","CidrIp": "0.0.0.0/0"},
-		  {"IpProtocol": "tcp","FromPort": "80","ToPort": "80","CidrIp": "0.0.0.0/0"}],
-        "SecurityGroupEgress": [
-		  {"IpProtocol": "-1","CidrIp": "0.0.0.0/0"}],
-        "Tags": [
-		  {"Key": "Name","Value": {"Fn::Join": ["-", [{"Ref": "Prefix"}, "web-sg"]]}},
-          {"Key": "Application","Value": {"Ref": "AWS::StackName"}},
-          {"Key": "Project","Value": {"Ref": "ProjectName"}}]
-      }
     }
+  
   },
   
   "Mappings" : {
@@ -102,4 +89,5 @@
       "eu-central-1"     : {"PV64" : "ami-6527cf0a", "HVM64" : "ami-ea26ce85", "HVMG2" : "ami-b50d8fda"}
     }
   }
+
 }

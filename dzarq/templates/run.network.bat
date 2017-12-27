@@ -1,7 +1,7 @@
 @echo off
 
-aws cloudformation create-stack^
-  --stack-name "dz-impro-network"^
+aws cloudformation update-stack^
+  --stack-name "dz-network"^
   --template-body file://network.json^
   --parameters ParameterKey="ProjectName",ParameterValue="dzarq"^
                ParameterKey="Prefix",ParameterValue="dz"^
