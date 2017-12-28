@@ -2,7 +2,7 @@
 
 aws cloudformation create-stack^
   --stack-name "dz-network"^
-  --template-body file://network.json^
+  --template-body file://dz-network.json^
   --parameters ParameterKey="ProjectName",ParameterValue="dzarq"^
                ParameterKey="Prefix",ParameterValue="dz"^
 			   ParameterKey="VpcCidr",ParameterValue="10.0.0.0/16"^

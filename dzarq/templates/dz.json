@@ -19,6 +19,12 @@
       "MinLength" : "1",
       "MaxLength" : "10"
     },
+    "Region": {
+      "Type": "String",
+      "Description": "The AWS region",
+      "MinLength": "1",
+      "MaxLength": "50"
+    },
     "AZone": {
       "Type": "String",
       "Description": "The availability zone for de db instance",
@@ -87,7 +93,15 @@
       "MaxLength": "41",
       "AllowedPattern" : "[a-zA-Z0-9]*",
       "ConstraintDescription" : "must contain only alphanumeric characters."
-    }	
+    },
+    "KeyName" : {
+      "Description" : "Name of an existing EC2 KeyPair to enable SSH access to the instances",
+      "Type" : "AWS::EC2::KeyPair::KeyName",
+      "MinLength": "1",
+      "MaxLength": "255",
+      "AllowedPattern" : "[\\x20-\\x7E]*",
+      "ConstraintDescription" : "can contain only ASCII characters."
+    }    
   },
   
   "Resources": {
@@ -99,7 +113,7 @@
         "Parameters": {
           "ProjectName" : {"Ref" : "ProjectName"},
           "Prefix" : {"Ref" : "Prefix"},
-          "VpcCdir" : {"Ref": "VpcCidr"},
+          "VpcCidr" : {"Ref": "VpcCidr"},
           "SubnetCidrA" : {"Ref": "SubnetCidrA"},
           "SubnetCidrB" : {"Ref": "SubnetCidrB"},
           "SubnetCidrC" : {"Ref": "SubnetCidrC"}
@@ -117,7 +131,7 @@
           "Prefix" : {"Ref" : "Prefix"},
           "VpcId" : { "Fn::GetAtt": ["Network","Outputs.Vpc"]},
           "RdsAccessSecurityGroup" : { "Fn::GetAtt": ["Network","Outputs.RdsSG"]},
-          "SubnetsIds" : {"Fn::Join" : [ ":", [ 
+          "SubnetsIds" : {"Fn::Join" : [ ",", [ 
             {"Fn::GetAtt": ["Network","Outputs.SubnetA"]}, 
             {"Fn::GetAtt": ["Network","Outputs.SubnetB"]}, 
             {"Fn::GetAtt": ["Network","Outputs.SubnetC"]}
@@ -138,14 +152,13 @@
         "Parameters": {
           "ProjectName" : {"Ref" : "ProjectName"},
           "Prefix" : {"Ref" : "Prefix"},
-          "AZone": "",
-          "SubnetId": "",
-          "VpcId": "",
-          "WebServerSecurityGroup": "",
-          "KeyName" : ""
+          "AZone": {"Ref" : "AZone"},
+          "SubnetId": {"Fn::GetAtt": ["Network","Outputs.SubnetA"]},
+          "VpcId": { "Fn::GetAtt": ["Network","Outputs.Vpc"]},
+          "WebServerSecurityGroup": { "Fn::GetAtt": ["Network","Outputs.WebServeSG"]},
+          "KeyName" : {"Ref" : "KeyName"}
         }
       }  
     } 
-
   }
 }
