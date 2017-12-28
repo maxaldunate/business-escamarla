@@ -23,6 +23,12 @@
       "Description": "The availability zone for de db instance",
       "MinLength": "1",
       "MaxLength": "10"
+    },
+    "SubnetId": {
+      "Type": "String",
+      "Description": "The subnet id",
+      "MinLength": "1",
+      "MaxLength": "100"
     },	
     "VpcId": {
       "Type": "AWS::EC2::VPC::Id",
@@ -48,20 +54,48 @@
   
     "WebServer" : {
       "Type" : "AWS::EC2::Instance", 
-	  "DeletionPolicy" : "Delete",
+	    "DeletionPolicy" : "Delete",
       "Properties" : {
         "ImageId" : "ami-a4f177dd",
-		"AvailabilityZone" : {"Ref": "AZone"},
+		    "AvailabilityZone" : {"Ref": "AZone"},
         "KeyName" : { "Ref" : "KeyName" },
         "InstanceType" : "t2.micro",
-        "SecurityGroups" : [ {"Ref" : "WebServerSecurityGroup"} ],
-        "BlockDeviceMappings" : [{
-		  "DeviceName" : "/dev/sda1",
-		  "Ebs" : { "VolumeSize" : "8" } }]}
+        "Monitoring" : "false",
+        "SourceDestCheck" : "true",
+        "NetworkInterfaces" : [{
+                "AssociatePublicIpAddress": "true",
+                "DeviceIndex": "0",
+                "GroupSet": [{ "Ref" : "WebServerSecurityGroup" }],
+                "SubnetId": { "Ref" : "SubnetId" }
+        }],
+        "BlockDeviceMappings" : [{"DeviceName" : "/dev/sda1",
+                                  "Ebs" : { "VolumeSize" : "8", 
+                                            "DeleteOnTermination": "true",
+                                            "VolumeType" : "gp2"} }],
+        "Tags": [{"Key": "Name","Value": {"Fn::Join": ["-", [{"Ref": "Prefix"}, "web-server"]]}},
+                 {"Key": "Application","Value": {"Ref": "AWS::StackName"}},
+                 {"Key": "Project","Value": {"Ref": "ProjectName"}}]        
+      }
     }
   
   },
   
+  "Outputs": {
+    "WebServer": {
+    "Value": {"Ref": "WebServer"},
+      "Description": "WebServer Id"
+    },
+    "PublicDnsName": {
+    "Value": {"Fn::GetAtt": ["WebServer", "PublicDnsName"]},
+      "Description": "PublicDnsName for WebServer"
+    },
+    "PublicIp": {
+    "Value": {"Fn::GetAtt": ["WebServer", "PublicIp"]},
+      "Description": "PublicIp for WebServer"
+    }
+  },
+
+
   "Mappings" : {
     "AWSInstanceType2Arch" : {
       "t1.micro"    : { "Arch" : "PV64"   },

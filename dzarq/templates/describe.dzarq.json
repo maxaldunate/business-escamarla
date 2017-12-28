@@ -1,0 +1,26 @@
+DZ ARQ
+
+"PublicDnsName": "ec2-34-251-135-23.eu-west-1.compute.amazonaws.com", 
+"PublicIpAddress": "34.251.135.23", 
+"EnaSupport": true, 
+"ClientToken": "", 
+"NetworkInterfaces": [
+    "Description": "Primary network interface", 
+    "PrivateIpAddresses": [
+            "Association": {
+                "PublicIp": "34.251.135.23", 
+                "PublicDnsName": "ec2-34-251-135-23.eu-west-1.compute.amazonaws.com", 
+                "IpOwnerId": "273389312991"
+	"Groups": [
+                            "Association": {
+                                "PublicIp": "34.251.135.23", 
+                                "PublicDnsName": "ec2-34-251-135-23.eu-west-1.compute.amazonaws.com", 
+                                "IpOwnerId": "273389312991"
+    "BlockDeviceMappings": [
+                            "DeviceName": "/dev/xvda", 
+                            "Ebs": {
+                                "DeleteOnTermination": false, 
+              "IamInstanceProfile": {
+                  "Id": "AIPAJ3UJYERSGTU5V4RWA", 
+                  "Arn": "arn:aws:iam::273389312991:instance-profile/WebAndDb-Role"
+               "RootDeviceName": "/dev/xvda", 

@@ -18,7 +18,7 @@
       "MinLength": "1",
       "MaxLength": "10"
     },
-    "VpcCdir": {
+    "VpcCidr": {
       "Type": "String",
       "Description": "IP Address range for the VPN connected VPC",
       "MinLength": "9",
@@ -60,7 +60,7 @@
     "MainVpc": {
       "Type": "AWS::EC2::VPC",
       "Properties": {
-        "CidrBlock": {"Ref": "VpcCdir"},
+        "CidrBlock": {"Ref": "VpcCidr"},
         "EnableDnsSupport": "true",
         "EnableDnsHostnames": "true",
         "InstanceTenancy": "default",

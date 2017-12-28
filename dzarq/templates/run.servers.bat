@@ -1,11 +1,12 @@
 @echo off
 
-aws cloudformation create-stack^
+aws cloudformation update-stack^
   --stack-name "dz-servers"^
   --template-body file://servers.json^
   --parameters ParameterKey="ProjectName",ParameterValue="dzarq"^
                ParameterKey="Prefix",ParameterValue="dz"^
 			   ParameterKey="AZone",ParameterValue="eu-west-1a"^
-			   ParameterKey="VpcId",ParameterValue="vpc-acd233ca"^
-			   ParameterKey="WebServerSecurityGroup",ParameterValue="sg-89b09df2"^
+			   ParameterKey="SubnetId",ParameterValue="subnet-86c68edd"^
+			   ParameterKey="VpcId",ParameterValue="vpc-e34baa85"^
+			   ParameterKey="WebServerSecurityGroup",ParameterValue="sg-5a6f4021"^
 			   ParameterKey="KeyName",ParameterValue="kp-wordpress-instance"
