@@ -2,7 +2,7 @@
 
 aws cloudformation create-stack^
   --stack-name "dz-rds"^
-  --template-body file://ddbb.json^
+  --template-body file://dz-ddbb.json^
   --parameters ParameterKey="ProjectName",ParameterValue="dzarq"^
                ParameterKey="Prefix",ParameterValue="dz"^
 			   ParameterKey="VpcId",ParameterValue="vpc-e34baa85"^

@@ -2,7 +2,7 @@
 
 aws cloudformation update-stack^
   --stack-name "dz-servers"^
-  --template-body file://servers.json^
+  --template-body file://dz-servers.json^
   --parameters ParameterKey="ProjectName",ParameterValue="dzarq"^
                ParameterKey="Prefix",ParameterValue="dz"^
 			   ParameterKey="AZone",ParameterValue="eu-west-1a"^
