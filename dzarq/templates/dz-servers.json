@@ -29,7 +29,7 @@
       "Description": "The subnet id",
       "MinLength": "1",
       "MaxLength": "100"
-    },	
+    },
     "VpcId": {
       "Type": "AWS::EC2::VPC::Id",
       "Description": "VpcId of your existing VPC",
@@ -47,17 +47,17 @@
       "MaxLength": "255",
       "AllowedPattern" : "[\\x20-\\x7E]*",
       "ConstraintDescription" : "can contain only ASCII characters."
-    }	
+    }
   },
 
   "Resources": {
   
     "WebServer" : {
       "Type" : "AWS::EC2::Instance", 
-	    "DeletionPolicy" : "Delete",
+        "DeletionPolicy" : "Delete",
       "Properties" : {
         "ImageId" : "ami-a4f177dd",
-		    "AvailabilityZone" : {"Ref": "AZone"},
+        "AvailabilityZone" : {"Ref": "AZone"},
         "KeyName" : { "Ref" : "KeyName" },
         "InstanceType" : "t2.micro",
         "Monitoring" : "false",

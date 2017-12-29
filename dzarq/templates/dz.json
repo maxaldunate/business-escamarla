@@ -109,7 +109,7 @@
     "Network": {
       "Type": "AWS::CloudFormation::Stack",
       "Properties": {
-        "TemplateURL": "https://s3-eu-west-1.amazonaws.com/dzarq/cli/dz-network.json",
+        "TemplateURL": "https://s3-eu-west-1.amazonaws.com/dzarq/cli/dz/dz-network.json",
         "Parameters": {
           "ProjectName" : {"Ref" : "ProjectName"},
           "Prefix" : {"Ref" : "Prefix"},
@@ -125,7 +125,7 @@
       "Type": "AWS::CloudFormation::Stack",
       "DependsOn": ["Network"],
       "Properties": {
-        "TemplateURL": "https://s3-eu-west-1.amazonaws.com/dzarq/cli/dz-ddbb.json",
+        "TemplateURL": "https://s3-eu-west-1.amazonaws.com/dzarq/cli/dz/dz-ddbb.json",
         "Parameters": {
           "ProjectName" : {"Ref" : "ProjectName"},
           "Prefix" : {"Ref" : "Prefix"},
@@ -148,7 +148,7 @@
       "Type": "AWS::CloudFormation::Stack",
       "DependsOn": ["Network"],
       "Properties": {
-        "TemplateURL": "https://s3-eu-west-1.amazonaws.com/dzarq/cli/dz-servers.json",
+        "TemplateURL": "https://s3-eu-west-1.amazonaws.com/dzarq/cli/dz/dz-servers.json",
         "Parameters": {
           "ProjectName" : {"Ref" : "ProjectName"},
           "Prefix" : {"Ref" : "Prefix"},
