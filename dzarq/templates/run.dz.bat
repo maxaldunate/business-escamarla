@@ -1,13 +1,13 @@
 @echo off
 
-aws s3 cp dz.json         s3://dzarq/cli/dz.json
-aws s3 cp dz-ddbb.json    s3://dzarq/cli/dz-ddbb.json
-aws s3 cp dz-network.json s3://dzarq/cli/dz-network.json
-aws s3 cp dz-servers.json s3://dzarq/cli/dz-servers.json
+aws s3 cp dz.json           s3://dzarq/cli/dz/dz.json
+aws s3 cp dz-ddbb.json      s3://dzarq/cli/dz/dz-ddbb.json
+aws s3 cp dz-network.json   s3://dzarq/cli/dz/dz-network.json
+aws s3 cp dz-servers.json   s3://dzarq/cli/dz/dz-servers.json
 
 aws cloudformation create-stack^
   --stack-name "dz"^
-  --template-url "https://s3-eu-west-1.amazonaws.com/dzarq/cli/dz.json"^
+  --template-url "https://s3-eu-west-1.amazonaws.com/dzarq/cli/dz/dz.json"^
   --parameters ParameterKey="ProjectName",ParameterValue="dzarq"^
                ParameterKey="Prefix",ParameterValue="dz"^
                ParameterKey="Region",ParameterValue="Maxito"^

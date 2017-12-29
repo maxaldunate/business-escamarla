@@ -17,7 +17,7 @@
       "AllowedPattern": "[A-Za-z0-9]+",
       "MinLength": "1",
       "MaxLength": "10"
-    },	
+    },
     "VpcId": {
       "Type": "AWS::EC2::VPC::Id",
       "Description": "VpcId of your existing VPC",
@@ -80,10 +80,10 @@
                  {"Key": "Project","Value": {"Ref": "ProjectName"}}]
       }
     },
-	
+
     "DbMySqlInstance" : {
       "Type" : "AWS::RDS::DBInstance",
-	  "DeletionPolicy" : "Delete",
+      "DeletionPolicy" : "Delete",
       "Properties" : {
         "AllocatedStorage" : "20",
         "AllowMajorVersionUpgrade" : "false",
@@ -92,8 +92,8 @@
         "BackupRetentionPeriod" : "2",
         "CopyTagsToSnapshot" : "true",
         "DBInstanceClass" : "db.t2.micro",
-		"DBName" : {"Ref" : "DBName"},
-		"DBSubnetGroupName" : {"Ref" : "SqlDBSubnetGroup"},
+        "DBName" : {"Ref" : "DBName"},
+        "DBSubnetGroupName" : {"Ref" : "SqlDBSubnetGroup"},
         "Engine" : "mysql",
         "EngineVersion" : "5.6.37",
         "LicenseModel" : "general-public-license",
@@ -107,18 +107,18 @@
         "PubliclyAccessible" : "true",
         "StorageEncrypted" : "false",
         "StorageType" : "gp2",
-		"VPCSecurityGroups" : [ {"Ref" : "RdsAccessSecurityGroup"} ],
+        "VPCSecurityGroups" : [ {"Ref" : "RdsAccessSecurityGroup"} ],
         "Tags": [{"Key": "Name","Value": {"Fn::Join": ["-", [{"Ref": "Prefix"}, "rdsMySql"]]}},
-	             {"Key": "Application","Value": {"Ref": "AWS::StackName"}},
-		         {"Key": "Project","Value": {"Ref": "ProjectName"}}]
-	    
+                 {"Key": "Application","Value": {"Ref": "AWS::StackName"}},
+                 {"Key": "Project","Value": {"Ref": "ProjectName"}}]
+        
       }
-    }	
+    }
   },
   
   "Outputs": {
     "EndpointAddress": {
-	  "Value": {"Fn::GetAtt": ["DbMySqlInstance", "Endpoint.Address"]},
+      "Value": {"Fn::GetAtt": ["DbMySqlInstance", "Endpoint.Address"]},
       "Description": "Db Name. MAIN NAME of the instance"
     }
   }  

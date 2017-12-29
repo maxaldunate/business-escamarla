@@ -65,34 +65,34 @@
         "EnableDnsHostnames": "true",
         "InstanceTenancy": "default",
         "Tags": [{"Key": "Name","Value": {"Fn::Join": ["-", [{"Ref": "Prefix"}, "vpc"]]}},
-		         {"Key": "Application","Value": {"Ref": "AWS::StackName"}},
-				 {"Key": "Project","Value": {"Ref": "ProjectName"}}]
+                 {"Key": "Application","Value": {"Ref": "AWS::StackName"}},
+                 {"Key": "Project","Value": {"Ref": "ProjectName"}}]
       }
     },
-	"MyDHCPOptions" :  {
+    "MyDHCPOptions" :  {
       "Type" : "AWS::EC2::DHCPOptions",
       "Properties" : {
         "DomainName" : "eu-west-1.compute.internal",
         "DomainNameServers" : ["AmazonProvidedDNS"],
         "Tags": [{"Key": "Name","Value": {"Fn::Join": ["-", [{"Ref": "Prefix"}, "dhcp-opts"]]}},
-		         {"Key": "Application","Value": {"Ref": "AWS::StackName"}},
-				 {"Key": "Project","Value": {"Ref": "ProjectName"}}]
+                 {"Key": "Application","Value": {"Ref": "AWS::StackName"}},
+                 {"Key": "Project","Value": {"Ref": "ProjectName"}}]
       }
     },
-	"VPCDHCPOptionsAssociation" : {
+    "VPCDHCPOptionsAssociation" : {
       "Type" : "AWS::EC2::VPCDHCPOptionsAssociation",
       "Properties" : {
         "DhcpOptionsId" : {"Ref": "MyDHCPOptions"},
         "VpcId" : {"Ref": "MainVpc"}
       }
-	},
+    },
     "TheRT": {
       "Type": "AWS::EC2::RouteTable",
       "Properties": {
         "VpcId": {"Ref": "MainVpc"},
         "Tags": [{"Key": "Name","Value": {"Fn::Join": ["-", [{"Ref": "Prefix"}, "rt"]]}}, 
-		         {"Key": "Application","Value": {"Ref": "AWS::StackName"}},
-				 {"Key": "Project","Value": {"Ref": "ProjectName"}}]
+                 {"Key": "Application","Value": {"Ref": "AWS::StackName"}},
+                 {"Key": "Project","Value": {"Ref": "ProjectName"}}]
       }
     },
     "RouteForRT": {
@@ -108,8 +108,8 @@
       "Type": "AWS::EC2::InternetGateway",
       "Properties": {
         "Tags": [{"Key": "Name","Value": {"Fn::Join": ["-", [{"Ref": "Prefix"}, "igw"]]}},
-		         {"Key": "Application","Value": {"Ref": "AWS::StackName"}}, 
-				 {"Key": "Project","Value": {"Ref": "ProjectName"}}]
+                 {"Key": "Application","Value": {"Ref": "AWS::StackName"}}, 
+                 {"Key": "Project","Value": {"Ref": "ProjectName"}}]
       }
     },
     "VpcToIgwAttachement": {
@@ -127,8 +127,8 @@
         "MapPublicIpOnLaunch": "false",
         "VpcId": {"Ref": "MainVpc"},
         "Tags": [{"Key": "Name","Value": {"Fn::Join": ["-", [{"Ref": "Prefix"}, "subA"]]}}, 
-		         {"Key": "Application","Value": {"Ref": "AWS::StackName"}}, 
-				 {"Key": "Project","Value": {"Ref": "ProjectName"}}]
+                 {"Key": "Application","Value": {"Ref": "AWS::StackName"}}, 
+                 {"Key": "Project","Value": {"Ref": "ProjectName"}}]
       }
     },
     "SubnetB": {
@@ -139,8 +139,8 @@
         "MapPublicIpOnLaunch": "false",
         "VpcId": {"Ref": "MainVpc"},
         "Tags": [{"Key": "Name","Value": {"Fn::Join": ["-", [{"Ref": "Prefix"}, "subB"]]}}, 
-		         {"Key": "Application","Value": {"Ref": "AWS::StackName"}},
-				 {"Key": "Project","Value": {"Ref": "ProjectName"}}]
+                 {"Key": "Application","Value": {"Ref": "AWS::StackName"}},
+                 {"Key": "Project","Value": {"Ref": "ProjectName"}}]
       }
     },
     "SubnetC": {
@@ -151,8 +151,8 @@
         "MapPublicIpOnLaunch": "false",
         "VpcId": {"Ref": "MainVpc"},
         "Tags": [{"Key": "Name","Value": {"Fn::Join": ["-", [{"Ref": "Prefix"}, "subC"]]}}, 
-		         {"Key": "Application","Value": {"Ref": "AWS::StackName"}},
-				 {"Key": "Project","Value": {"Ref": "ProjectName"}}]
+                 {"Key": "Application","Value": {"Ref": "AWS::StackName"}},
+                 {"Key": "Project","Value": {"Ref": "ProjectName"}}]
       }
     },
     "NetworkAcl": {
@@ -160,8 +160,8 @@
       "Properties": {
         "VpcId": {"Ref": "MainVpc"},
         "Tags": [{"Key": "Name","Value": {"Fn::Join": ["-", [{"Ref": "Prefix"}, "acl"]]}},
-  		         {"Key": "Application","Value": {"Ref": "AWS::StackName"}},
-				 {"Key": "Project","Value": {"Ref": "ProjectName"}}]
+                 {"Key": "Application","Value": {"Ref": "AWS::StackName"}},
+                 {"Key": "Project","Value": {"Ref": "ProjectName"}}]
       }
     },
     "NetworkAclEntry1": {
@@ -239,13 +239,13 @@
         "GroupDescription": "SG for web Servers. HTTP+S & SSH",
         "VpcId": {"Ref": "MainVpc"},
         "SecurityGroupIngress": [
-		  {"IpProtocol": "tcp","FromPort": "22","ToPort": "22","CidrIp": "0.0.0.0/0"}, 
-		  {"IpProtocol": "tcp","FromPort": "443","ToPort": "443","CidrIp": "0.0.0.0/0"},
-		  {"IpProtocol": "tcp","FromPort": "80","ToPort": "80","CidrIp": "0.0.0.0/0"}],
+          {"IpProtocol": "tcp","FromPort": "22","ToPort": "22","CidrIp": "0.0.0.0/0"}, 
+          {"IpProtocol": "tcp","FromPort": "443","ToPort": "443","CidrIp": "0.0.0.0/0"},
+          {"IpProtocol": "tcp","FromPort": "80","ToPort": "80","CidrIp": "0.0.0.0/0"}],
         "SecurityGroupEgress": [
-		  {"IpProtocol": "-1","CidrIp": "0.0.0.0/0"}],
+          {"IpProtocol": "-1","CidrIp": "0.0.0.0/0"}],
         "Tags": [
-		  {"Key": "Name","Value": {"Fn::Join": ["-", [{"Ref": "Prefix"}, "web-sg"]]}},
+          {"Key": "Name","Value": {"Fn::Join": ["-", [{"Ref": "Prefix"}, "web-sg"]]}},
           {"Key": "Application","Value": {"Ref": "AWS::StackName"}},
           {"Key": "Project","Value": {"Ref": "ProjectName"}}]
       }
@@ -257,11 +257,11 @@
         "GroupDescription": "SG for RDS MySql access",
         "VpcId": {"Ref": "MainVpc"},
         "SecurityGroupIngress": [
-		  {"IpProtocol": "tcp","FromPort": "3306","ToPort": "3306","SourceSecurityGroupId": {"Ref" : "WebServeSG"}}],
+          {"IpProtocol": "tcp","FromPort": "3306","ToPort": "3306","SourceSecurityGroupId": {"Ref" : "WebServeSG"}}],
         "SecurityGroupEgress": [
-		  {"IpProtocol": "-1","CidrIp": "0.0.0.0/0"}],
+          {"IpProtocol": "-1","CidrIp": "0.0.0.0/0"}],
         "Tags": [
-		  {"Key": "Name","Value": {"Fn::Join": ["-", [{"Ref": "Prefix"}, "rds-sg"]]}},
+          {"Key": "Name","Value": {"Fn::Join": ["-", [{"Ref": "Prefix"}, "rds-sg"]]}},
           {"Key": "Application","Value": {"Ref": "AWS::StackName"}},
           {"Key": "Project","Value": {"Ref": "ProjectName"}}]
       }
@@ -270,36 +270,36 @@
 
   "Outputs": {
     "Vpc": {
-	  "Value": {"Ref": "MainVpc"},
+      "Value": {"Ref": "MainVpc"},
       "Description": "Vpc Id"
     },
     "WebServeSG": {
-	  "Value": {"Ref": "WebServeSG"},
+      "Value": {"Ref": "WebServeSG"},
       "Description": "WebServeSG Id"
     },
     "RdsSG": {
-	  "Value": {"Ref": "RdsSG"},
+      "Value": {"Ref": "RdsSG"},
       "Description": "RdsSG Id"
     },
     "SubnetA": {
-	  "Value": {"Ref": "SubnetA"},
+      "Value": {"Ref": "SubnetA"},
       "Description": "SubnetA Id"
     },
     "SubnetB": {
-	  "Value": {"Ref": "SubnetB"},
+      "Value": {"Ref": "SubnetB"},
       "Description": "SubnetB Id"
     },
     "SubnetC": {
-	  "Value": {"Ref": "SubnetC"},
+      "Value": {"Ref": "SubnetC"},
       "Description": "SubnetC Id"
     },	
     "DefaultNetworkAcl": {
-	  "Value": {"Fn::GetAtt": ["MainVpc", "DefaultNetworkAcl"]},
+      "Value": {"Fn::GetAtt": ["MainVpc", "DefaultNetworkAcl"]},
       "Description": "Default Network ACL Id"
     },
     "DefaultSecurityGroup": {
       "Value": {"Fn::GetAtt": ["MainVpc", "DefaultSecurityGroup"]},
-	  "Description": "Default Security Group Id"      
+      "Description": "Default Security Group Id"      
     }
   }
 }
