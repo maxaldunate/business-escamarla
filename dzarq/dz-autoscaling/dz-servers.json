@@ -30,6 +30,11 @@
       "MinLength": "1",
       "MaxLength": "100"
     },
+    "SubnetsIds" : {
+      "Type" : "CommaDelimitedList",
+      "Description" : "The list of SubnetIds in your Virtual Private Cloud (VPC)",
+      "ConstraintDescription" : "must be a list of at least two existing subnets associated with at least two different availability zones. They should be residing in the selected Virtual Private Cloud."
+    },
     "VpcId": {
       "Type": "AWS::EC2::VPC::Id",
       "Description": "VpcId of your existing VPC",
@@ -37,7 +42,12 @@
     },	
     "WebServerSecurityGroup": {
       "Type": "AWS::EC2::SecurityGroup::Id",
-      "Description": "Security Group for access to RDS MySql",
+      "Description": "Security Group for access to Web Servers",
+      "ConstraintDescription": "must be the SG Id of an existing Virtual Private Cloud."
+    },  
+    "LoadBalancerSecurityGroup": {
+      "Type": "AWS::EC2::SecurityGroup::Id",
+      "Description": "Security Group for access to Load Balancer",
       "ConstraintDescription": "must be the SG Id of an existing Virtual Private Cloud."
     },
     "KeyName" : {
@@ -51,7 +61,58 @@
   },
 
   "Resources": {
-  
+
+    "AppLoadBalancer" : {
+      "Type" : "AWS::ElasticLoadBalancingV2::LoadBalancer",
+      "Properties" : {    
+        "LoadBalancerAttributes" : [
+                 {"Key" : "access_logs.s3.enabled", "Value" : "false" },
+                 {"Key" : "deletion_protection.enabled", "Value" : "false" },
+                 {"Key" : "idle_timeout.timeout_seconds", "Value" : "60" }
+        ],
+        "Scheme" : "internet-facing",
+        "SecurityGroups" : [ {"Ref" : "LoadBalancerSecurityGroup"} ],
+        "Subnets" : {"Ref": "SubnetsIds"},
+        "Type" : "application",
+        "Tags": [
+          {"Key": "Name","Value": {"Fn::Join": ["-", [{"Ref": "Prefix"}, "app-lb"]]}},
+          {"Key": "Application","Value": {"Ref": "AWS::StackName"}},
+          {"Key": "Project","Value": {"Ref": "ProjectName"}}]
+      }
+    },
+
+    "ALBListener" : {
+      "Type" : "AWS::ElasticLoadBalancingV2::Listener",
+      "Properties" : {
+        "DefaultActions" : [
+          {"Type" : "forward", "TargetGroupArn" : { "Ref" : "ALBTargetGroup" }}
+        ],
+        "LoadBalancerArn" : { "Ref" : "AppLoadBalancer" },
+        "Port" : "80",
+        "Protocol" : "HTTP"
+      }
+    },
+
+    "ALBTargetGroup" : {
+      "Type" : "AWS::ElasticLoadBalancingV2::TargetGroup",
+      "Properties" : {
+        "HealthCheckIntervalSeconds" : 10,
+        "HealthCheckTimeoutSeconds" : 5,
+        "HealthyThresholdCount" : 2,
+        "Port" : 80,
+        "Protocol" : "HTTP",
+        "UnhealthyThresholdCount" : 5,
+        "VpcId" : {"Ref" : "VpcId"},
+        "TargetGroupAttributes" : [
+              { "Key" : "stickiness.enabled", "Value" : "false" }
+        ],
+        "Tags": [
+          {"Key": "Name","Value": {"Fn::Join": ["-", [{"Ref": "Prefix"}, "app-lb"]]}},
+          {"Key": "Application","Value": {"Ref": "AWS::StackName"}},
+          {"Key": "Project","Value": {"Ref": "ProjectName"}}]          
+      }
+    },
+
     "WebServer" : {
       "Type" : "AWS::EC2::Instance", 
         "DeletionPolicy" : "Delete",

@@ -232,6 +232,23 @@
         "SubnetId": {"Ref": "SubnetC"}
       }
     },
+    "LoadBalancerSG": {
+      "Type": "AWS::EC2::SecurityGroup",
+      "Properties": {
+        "GroupName": "WebServeSG",
+        "GroupDescription": "SG for web Servers. HTTP+S & SSH",
+        "VpcId": {"Ref": "MainVpc"},
+        "SecurityGroupIngress": [
+          {"IpProtocol": "tcp","FromPort": "443","ToPort": "443","CidrIp": "0.0.0.0/0"},
+          {"IpProtocol": "tcp","FromPort": "80","ToPort": "80","CidrIp": "0.0.0.0/0"}],
+        "SecurityGroupEgress": [
+          {"IpProtocol": "-1","CidrIp": "0.0.0.0/0"}],
+        "Tags": [
+          {"Key": "Name","Value": {"Fn::Join": ["-", [{"Ref": "Prefix"}, "lb-sg"]]}},
+          {"Key": "Application","Value": {"Ref": "AWS::StackName"}},
+          {"Key": "Project","Value": {"Ref": "ProjectName"}}]
+      }
+    },
     "WebServeSG": {
       "Type": "AWS::EC2::SecurityGroup",
       "Properties": {
@@ -240,8 +257,8 @@
         "VpcId": {"Ref": "MainVpc"},
         "SecurityGroupIngress": [
           {"IpProtocol": "tcp","FromPort": "22","ToPort": "22","CidrIp": "0.0.0.0/0"}, 
-          {"IpProtocol": "tcp","FromPort": "443","ToPort": "443","CidrIp": "0.0.0.0/0"},
-          {"IpProtocol": "tcp","FromPort": "80","ToPort": "80","CidrIp": "0.0.0.0/0"}],
+          {"IpProtocol": "tcp","FromPort": "443","ToPort": "443","SourceSecurityGroupId": {"Ref" : "LoadBalancerSG"}},
+          {"IpProtocol": "tcp","FromPort": "80","ToPort": "80","SourceSecurityGroupId": {"Ref" : "LoadBalancerSG"}}],
         "SecurityGroupEgress": [
           {"IpProtocol": "-1","CidrIp": "0.0.0.0/0"}],
         "Tags": [
@@ -272,6 +289,10 @@
     "Vpc": {
       "Value": {"Ref": "MainVpc"},
       "Description": "Vpc Id"
+    },
+    "LoadBalancerSG": {
+      "Value": {"Ref": "LoadBalancerSG"},
+      "Description": "LoadBalancerSG Id"
     },
     "WebServeSG": {
       "Value": {"Ref": "WebServeSG"},
