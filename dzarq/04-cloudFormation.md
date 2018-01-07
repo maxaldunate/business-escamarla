@@ -76,6 +76,11 @@ Al crear server.json hay que asociarle el rds-SG creado en el template del rds
 aws cloudformation validate-template
 [JSONLint] (http://jsonlint.com)
 
+https://github.com/widdix/aws-cf-templates/tree/v2.0.1/wordpress
+http://templates.cloudonaut.io/en/latest/
+https://wordpress.org/plugins/tags/s3/
+https://cloudonaut.io/wordpress-on-aws-you-are-holding-it-wrong/
+https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/php-hawordpress-tutorial.html
 
 
 
@@ -94,3 +99,6 @@ aws cloudformation validate-template
 			 {"Key": "Project","Value": {"Ref": "ProjectName"}}]		
   }
 },
+
+
+

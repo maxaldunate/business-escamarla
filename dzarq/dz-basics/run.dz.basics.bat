@@ -4,6 +4,7 @@ aws s3 cp dz.json           s3://dzarq/cli/dz/dz.json
 aws s3 cp dz-ddbb.json      s3://dzarq/cli/dz/dz-ddbb.json
 aws s3 cp dz-network.json   s3://dzarq/cli/dz/dz-network.json
 aws s3 cp dz-servers.json   s3://dzarq/cli/dz/dz-servers.json
+aws s3 cp run.first.sh      s3://dzarq/cli/dz/run.first.sh
 
 aws cloudformation create-stack^
   --stack-name "dz"^

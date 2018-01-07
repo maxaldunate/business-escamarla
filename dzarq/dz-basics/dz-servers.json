@@ -56,7 +56,7 @@
       "Type" : "AWS::EC2::Instance", 
         "DeletionPolicy" : "Delete",
       "Properties" : {
-        "ImageId" : "ami-a4f177dd",
+        "ImageId" : "ami-56bf342f",
         "AvailabilityZone" : {"Ref": "AZone"},
         "KeyName" : { "Ref" : "KeyName" },
         "InstanceType" : "t2.micro",
