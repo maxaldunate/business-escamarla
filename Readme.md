@@ -13,3 +13,12 @@ Max Aldunate
 ### Potential Competitors
 potential-competitors/
 
+### Static Web Hosting
+* [Summary](static-web-hosting/readme.md)
+
+### Use Cases
+* [One](use-cases/UseCase.%20Distribuidores%20del%20Mediterraneo.txt)
+* [Two](use-cases/UseCase.%20Mobile%20Apps%20Spain.txt)
+
+
+The End

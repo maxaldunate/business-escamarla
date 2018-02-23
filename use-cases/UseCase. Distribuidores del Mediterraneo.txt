@@ -1,0 +1,30 @@
+Caso de Uso
+
+Distribuidores del Mediterraneo
+App Albaranes --> FTP --> Consola de Integracion  --> MS-SQL <-- ERM
+
+
+La empresa "Distribuidores del Mediterraneo" tiene un ERM en oficinas Centrales para consultar los Albaranes Generados por casa una de sus oficinas, repartidas por la península.
+
+Las oficinas tienen una aplicación "App Albaranes" que dejan los ficheros con los albaranes de cada cliente en un FTP que está en las oficinas centrales de "Distribuidores del Mediterraneo". En otro servidor hay una aplicación "Consola de Integracion" que lee los ficheros del FTP y realiza inserciones en una tabla del servidor MS-SQL.
+
+"Distribuidores del Mediterraneo" tiene diferentes procesos para mantener "limpio" el FTP, realiza backups de los 3 servidores: FTP, Servidor Ms-SQL y el servidor donde corre "Consola de Integracion". Durante los meses de verano el volumen de ventas, y ficheros, baja considerablemente. Durante el mes de diciembre y también en Marzo el volumen llega a triplicarse, por lo que los servidores y los canales de comunicación están dimensionados para soportar el máximo volumen de los meses punta.
+
+A pesar de ello, durante el mes de Diciembre se sufren retrasos en el proceso de los ficheros ya que la consola no alcanza a procesar con la suficiente velocidad los ficheros del FTP.
+
+Escamarla Integration Platform
+------------------------------
+
+La "App Albaranes" continúa subiendo ficheros pero al FTP de Escarmala. 
+
+La "Consola de Integracion" se reemplaza con un fichero de mapeo entre el fichero y la tabla del SQL. Este fichero de mapeo puede ser Java, JavaScript, C# o Python.
+
+Ahora "Distribuidores del Mediterraneo" ya no tiene que hacer mantenimiento del servidor FTP ni la limpieza de sus ficheros, ni del servidor de la "Consola de Integracion" que movía los datos del FTP a la BBDD. Sí debe mantener el servidor MS-SQL ya que "Distribuidores del Mediterraneo" ha decidido mantener en sus oficinas la BBDD.
+
+Ahora "Distribuidores del Mediterraneo" pagará muy poco durante los meses de verano en que la actividad baja significativamente. Y durante los meses "punta" "Escarmarla" aumentará tanto el FTP, como el procesamiento de los ficheros de forma automática sin que sea necesaria ninguna intervención manual.
+
+Ahora "Distribuidores del Mediterraneo" accederá a una web de monitorización de sus servicios que le infromará del volumen de ficheros procesados.
+
+Pocas veces al año "Distribuidores del Mediterraneo" cambia el formato del fichero o del SQL, cuando esto suceda sin ningún esfuerzo se puede desplegar los nuevos ficheros de definición de datos y realizar las pruebas en un entorno de pruebas, creándolo cuando sea necesario y eliminándolo al finalizar su uso.
+
+THE END
