@@ -1,13 +1,16 @@
 'use strict';
-console.log('Loading hello world function');
- 
+//console.log('Loading hello world function');
+var AWS = require('aws-sdk');
+
 exports.handler = function(event, context, callback) {
     let name = "you";
     let city = 'World';
     let time = 'day';
     let day = '';
     let responseCode = 200;
-    console.log("request: " + JSON.stringify(event));
+    let body = "nada de nada";
+
+    //console.log("request: " + JSON.stringify(event));
     
     // This is a simple illustration of app-specific logic to return the response. 
     // Although only 'event.queryStringParameters' are used here, other request data, 
@@ -18,7 +21,7 @@ exports.handler = function(event, context, callback) {
         if (event.queryStringParameters.name !== undefined && 
             event.queryStringParameters.name !== null && 
             event.queryStringParameters.name !== "") {
-            console.log("Received name: " + event.queryStringParameters.name);
+            //console.log("Received name: " + event.queryStringParameters.name);
             name = event.queryStringParameters.name;
         }
     }
@@ -27,20 +30,20 @@ exports.handler = function(event, context, callback) {
         if (event.pathParameters.proxy !== undefined && 
             event.pathParameters.proxy !== null && 
             event.pathParameters.proxy !== "") {
-            console.log("Received proxy: " + event.pathParameters.proxy);
+            //console.log("Received proxy: " + event.pathParameters.proxy);
             city = event.pathParameters.proxy;
         }
     }
     
     if (event.headers !== null && event.headers !== undefined) {
         if (event.headers['day'] !== undefined && event.headers['day'] !== null && event.headers['day'] !== "") {
-            console.log("Received day: " + event.headers.day);
+            //console.log("Received day: " + event.headers.day);
             day = event.headers.day;
         }
     }
     
     if (event.body !== null && event.body !== undefined) {
-        let body = JSON.parse(event.body)
+        body = JSON.parse(event.body)
         if (body.time) 
             time = body.time;
     }
@@ -66,6 +69,29 @@ exports.handler = function(event, context, callback) {
         },
         body: JSON.stringify(responseBody)
     };
-    console.log("response: " + JSON.stringify(response))
+    //console.log("response: " + JSON.stringify(response))
+
+    AWS.config.update({region: 'eu-west-1'});
+    var ddb = new AWS.DynamoDB.DocumentClient({apiVersion: '2012-10-08'});
+
+    body.requestId = event.requestContext.requestId;
+    var params = {
+      TableName: 'products',
+      Item: body
+    };
+
+    console.log(body);
+
+    // Call DynamoDB to add the item to the table
+    ddb.put(params, function(err, data) {
+      if (err) {
+        console.log("ERROR");
+        callback(err);
+      } else {
+        console.log("INSERTED OK");
+        callback(null, response);
+      }
+    });
+
     callback(null, response);
 };
