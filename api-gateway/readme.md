@@ -8,17 +8,32 @@ https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-create-
 * API Url  
   https://xxxxxxxx.execute-api.eu-west-1.amazonaws.com/production
 
-* POST
+* POST call  
 ```bash
-curl -v -X POST \
-  'https://r275xc9bmd.execute-api.us-west-2.amazonaws.com/test/Seattle?time=evening' \
-  -H 'content-type: application/json' \
-  -H 'day: Thursday' \
-  -H 'x-amz-docs-region: us-west-2' \
-  -d '{
-        "callerName": "John"
-      }'
+	curl -v -X POST \
+	  'https://xxxxxxxx.execute-api.us-west-1.amazonaws.com/production/Tucuman?time=nochecita' \
+	  -H 'content-type: application/json' \
+	  -H 'day: ElJueves' \
+	  -H 'x-amz-docs-region: us-west-1' \
+	  -H 'maxito-content: probemos' \
+	  -d '{
+	        "callerByName": "MaxAldunate"
+	      }'
 ```
 
+  * POST Response  
+  ![](proxy-integration/post-response.json)
+
+* GET call  
+```bash
+		curl -X GET \
+		  'https://xxxxxxxx.execute-api.us-west-1.amazonaws.com/production/Tucuman?time=tardecita' \
+		  -H 'content-type: application/json' \
+		  -H 'day: Miercoles' \
+		  -H 'x-amz-docs-region: us-west-1'
+```
+
+  * GET Response  
+  ![](proxy-integration/get-response.json)
 
 

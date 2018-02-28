@@ -1,0 +1,67 @@
+{
+    "message": "Good day, you of Tucuman. Happy Miercoles!",
+    "input": {
+        "resource": "/{proxy+}",
+        "path": "/Tucuman",
+        "httpMethod": "GET",
+        "headers": {
+            "Accept": "*/*",
+            "Accept-Encoding": "gzip, deflate, br",
+            "Accept-Language": "en,es;q=0.9,ca;q=0.8",
+            "cache-control": "no-cache",
+            "CloudFront-Forwarded-Proto": "https",
+            "CloudFront-Is-Desktop-Viewer": "true",
+            "CloudFront-Is-Mobile-Viewer": "false",
+            "CloudFront-Is-SmartTV-Viewer": "false",
+            "CloudFront-Is-Tablet-Viewer": "false",
+            "CloudFront-Viewer-Country": "ES",
+            "content-type": "application/json",
+            "day": "Miercoles",
+            "Host": "4sc9tb5aya.execute-api.eu-west-1.amazonaws.com",
+            "postman-token": "33ecf70b-24d3-cbdc-e447-73e51b08042f",
+            "User-Agent": "Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36",
+            "Via": "2.0 5a3f46f09431be3f1399a0dfa2ce38e3.cloudfront.net (CloudFront)",
+            "X-Amz-Cf-Id": "iAE86OK_2n9uE4N7weB5DEcIAJa25J9BBCLytIV457biyzXCd-5rZg==",
+            "x-amz-docs-region": "us-west-1",
+            "X-Amzn-Trace-Id": "Root=1-5a966516-60885701d30e98f9585fc7f2",
+            "X-Forwarded-For": "212.49.190.225, 54.240.157.47",
+            "X-Forwarded-Port": "443",
+            "X-Forwarded-Proto": "https"
+        },
+        "queryStringParameters": {
+            "time": "tardecita"
+        },
+        "pathParameters": {
+            "proxy": "Tucuman"
+        },
+        "stageVariables": null,
+        "requestContext": {
+            "requestTime": "28/Feb/2018:08:15:18 +0000",
+            "path": "/production/Tucuman",
+            "accountId": "23452345234524",
+            "protocol": "HTTP/1.1",
+            "resourceId": "7zfq6b",
+            "stage": "production",
+            "requestTimeEpoch": 1519805718182,
+            "requestId": "831a74ff-1c5f-11e8-87ef-2924e7a1848f",
+            "identity": {
+                "cognitoIdentityPoolId": null,
+                "accountId": null,
+                "cognitoIdentityId": null,
+                "caller": null,
+                "sourceIp": "212.49.190.225",
+                "accessKey": null,
+                "cognitoAuthenticationType": null,
+                "cognitoAuthenticationProvider": null,
+                "userArn": null,
+                "userAgent": "Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36",
+                "user": null
+            },
+            "resourcePath": "/{proxy+}",
+            "httpMethod": "GET",
+            "apiId": "4sc9tb5aya"
+        },
+        "body": null,
+        "isBase64Encoded": false
+    }
+}
