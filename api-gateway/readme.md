@@ -1,7 +1,9 @@
 # API Gateway Labs
 
-### Build an API Gateway API with Lambda Proxy Integration
-[Link](https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-create-api-as-simple-proxy-for-lambda.html)
+### Build an API Gateway API with Lambda Proxy Integration  
+
+https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-create-api-as-simple-proxy-for-lambda.html)
+
 
 * API Url  
   https://xxxxxxxx.execute-api.eu-west-1.amazonaws.com/production
