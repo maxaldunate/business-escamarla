@@ -23,4 +23,7 @@ potential-competitors/
 ### Cool Serverless Portfolio
 * [Summary](serverless-portfolio/readme.md)
 
+### API Gateway + Lambda + DynamoDB
+* [Summary](api-gateway/readme.md)
+
 The End
