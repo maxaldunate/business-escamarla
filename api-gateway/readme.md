@@ -1,5 +1,10 @@
 # API Gateway Labs
 
+### Pricing Model & Examples
+
+[My Summary](proxy-integration/pricing.md)
+
+
 ### Build an API Gateway API with Lambda Proxy Integration  
 
 https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-create-api-as-simple-proxy-for-lambda.html)
@@ -37,3 +42,4 @@ https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-create-
   ![](proxy-integration/get-response.json)
 
 
+  
