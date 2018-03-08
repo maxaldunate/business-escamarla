@@ -1,0 +1,33 @@
+---
+swagger: "2.0"
+info:
+  version: "2018-03-08T07:06:14Z"
+  title: "LambdaSimpleProxy"
+host: "4sc9tb5aya.execute-api.eu-west-1.amazonaws.com"
+basePath: "/production"
+schemes:
+- "https"
+paths:
+  /subscription:
+    get:
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/Empty"
+  /{proxy+}:
+    x-amazon-apigateway-any-method:
+      produces:
+      - "application/json"
+      parameters:
+      - name: "proxy"
+        in: "path"
+        required: true
+        type: "string"
+      responses: {}
+definitions:
+  Empty:
+    type: "object"
+    title: "Empty Schema"
