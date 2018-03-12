@@ -1,0 +1,77 @@
+{
+    "_id" : ObjectId("591bf517ada4270a4866c369"),
+    "ProcessingAt" : ISODate("2017-11-14T18:15:42.762Z"),
+    "Version" : NumberLong(636462801419257045),
+    "IdFacturacion" : "591bf517ada4270a4866c369",
+    "NumeroAlbaran" : "00639G301370",
+    "LineasValoracion" : [ 
+        {
+            "IdFacturacion" : "67e5b584-9eba-46fa-b2b2-88935fad94fb",
+            "TarifaAplicada" : "00001",
+            "CodigoAlias" : "830030",
+            "Orden" : 1,
+            "EnumUnidadMedida" : "Peso",
+            "Descripcion" : "Ecommerce Nacional Peso. Tramo hasta 1",
+            "FranquiciaFacturacion" : "00639",
+            "EsManual" : false,
+            "Cantidad" : 1.0,
+            "PrecioUnitario" : "10.47",
+            "ImporteLinea" : "10.47",
+            "PorcentajeDescuento" : "0",
+            "ImporteDescuento" : "0",
+            "EnumAgrupacionConcepto" : "Transporte",
+            "LineasValoracionImpuestos" : [],
+            "GrupoImpositivo" : 1
+        }
+    ],
+    "TotalesValoracion" : {
+        "BaseImponible" : "10.47",
+        "ImporteVentas" : "10.47",
+        "Total" : "10.47",
+        "TotalImpuestos" : "0"
+    },
+    "FraccionesAndDivisores" : {
+        "EnumPuentesFracciones" : "PuentesFraccion2",
+        "EnumPesoVolumDivisores" : "PesoVolum6Mil"
+    },
+    "DatosGenerales" : {
+        "FechaSolicitud" : ISODate("2017-05-17T07:00:40.833Z"),
+        "FechaRecogida" : ISODate("2017-05-17T16:15:41.000Z"),
+        "FechaValoracion" : ISODate("2017-05-17T16:15:41.000Z"),
+        "EnumServicioMrw" : "Ecommerce",
+        "EnumTipoGeograficoOperativo" : "Nacional",
+        "EnumEspecificacionServicio" : "Enviado",
+        "EnumFrecuencia" : "SinFrecuencia",
+        "EnumTramoHorario" : "SinTramoHorario",
+        "EnumPlan" : "SinPlan",
+        "KmRecogidaFacturables" : 0.0,
+        "KmEntregaFacturables" : 0.0,
+        "TipoRetornoEnvio" : "SinRetorno",
+        "ZonaTarifaria" : ""
+    },
+    "BultosValorado" : [ 
+        {
+            "IdBulto" : ObjectId("5a0b32cd818a4b8fb8f18a7a"),
+            "Version" : NumberLong(636462801419257039),
+            "PesoEnKilos" : 1.0,
+            "Dimensiones" : {
+                "Alto" : "10cm",
+                "Largo" : "10cm",
+                "Ancho" : "10cm"
+            },
+            "PesoVolumetrico" : 1.0,
+            "Puentes" : 1,
+            "EnumUsoPesoVolumetrico" : "UsarPeso",
+            "CodigosExcesoIntegracion" : "00",
+            "LetraTamaño" : "XS"
+        }
+    ],
+    "IdTarifaAsignada" : ObjectId("51af36229b13aec47e257970"),
+    "Avisos" : [],
+    "Explicaciones" : [],
+    "IdDetalleRecalculo" : ObjectId("000000000000000000000000"),
+    "ClienteFacturacionCodigoFranquicia" : "00639",
+    "EsInternacional" : false,
+    "FechaPrimeraValoracion" : Date(-62135596800000),
+    "FechaUltimaValoracion" : ISODate("2017-11-14T18:15:42.762Z")
+}
