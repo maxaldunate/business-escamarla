@@ -10,8 +10,11 @@
 ### API Gateway + Lambda + DynamoDB
 * [Summary](api-gateway/readme.md)
 
+### Static Web Hosting
+* [Summary](static-web-hosting/readme.md)
 
-
+### Cool Serverless Portfolio
+* [Summary](serverless-portfolio/readme.md)
 
 
 The End
