@@ -1,4 +1,17 @@
 # EIN. Escamarla Integration
+Flexible and Reliable Integration as a service
+
+### Use Cases
+* [One](use-cases/UseCase.%20Distribuidores%20del%20Mediterraneo.txt)
+* [Two](use-cases/UseCase.%20Mobile%20Apps%20Spain.txt)
+
+
+* [Potential Competitors Analysis](potential-competitors-analysis.md)
+
+
+mongo-size-examples
+
+
 
 ## Software Components
 * WebPage: Frontend with Angular 4.0
