@@ -1,0 +1,13 @@
+version: 0.1
+
+phases:
+  build:
+    commands:
+      - echo Nothing to do yet
+artifacts:
+  files:
+    - index.html
+    - favicon.ico
+    - cv-max-aldunate-2018-02.pdf
+    - styles/main.css
+    - images/*

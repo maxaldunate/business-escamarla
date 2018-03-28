@@ -18,3 +18,20 @@
 
 STOP at https://github.com/escamarla/aws-training/tree/master/a-cloud-guru/04-serverless-portfolio#cloudfront--ssl
 
+
+
+### Technologies
+* Brew
+* Git and github
+* SSH
+* HTML
+* CSS
+* Font Awesome
+* Google Fonts
+
+Behavior cloudfront redirect http to https
+
+AQUI ME HE QUEDADO
+
+Automate your deployment
+https://github.com/escamarla/aws-training/blob/master/a-cloud-guru/04-serverless-portfolio/readme.md#automate-your-deployment-1
