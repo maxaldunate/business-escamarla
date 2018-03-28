@@ -34,8 +34,34 @@
 ### ELB, CloudFront & SSL Certificates
 * CloudFront 
 * [ELB, CloudFront & SSL Certificates Details](elb-cf-ssl.md)
-
-### Final Improvements [PENDING]
 * Improve Security Group for ELB, accessing from CloudFront
+
+### IMprove Monitoring
+* [Monitoring Memory and Disk Metrics for Amazon EC2 Linux Instances](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/mon-scripts.html?shortFooter=true#using_put_script)
+
+* Install Packages. Download and unzip **aws-scripts-mon**
+```bash
+# install
+sudo yum install perl-Switch perl-DateTime perl-Sys-Syslog perl-LWP-Protocol-https -y
+# download
+curl https://aws-cloudwatch.s3.amazonaws.com/downloads/CloudWatchMonitoringScripts-1.2.2.zip -O
+# run
+unzip CloudWatchMonitoringScripts-1.2.2.zip
+rm CloudWatchMonitoringScripts-1.2.2.zip
+cd aws-scripts-mon
+
+```
+
+* Verify
+`./mon-put-instance-data.pl --mem-util --verify --verbose`
+
+`crontab -e`
+`nano /etc/crontab`
+
+`*/5 * * * * ~/aws-scripts-mon/mon-put-instance-data.pl --mem-used-incl-cache-buff --mem-util --disk-space-util --disk-path=/ --from-cron`
+
+`/var/log/cron`
+
+### Pending
 * Autoscaling Group
 
