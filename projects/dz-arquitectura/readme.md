@@ -36,8 +36,8 @@
 * [ELB, CloudFront & SSL Certificates Details](elb-cf-ssl.md)
 * Improve Security Group for ELB, accessing from CloudFront
 
-### IMprove Monitoring
-* [Monitoring Memory and Disk Metrics for Amazon EC2 Linux Instances](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/mon-scripts.html?shortFooter=true#using_put_script)
+### Improve Monitoring
+* [Monitoring Memory and Disk Metrics for Amazon EC2 Linux Instances](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/mon-scripts.html)
 
 * Install Packages. Download and unzip **aws-scripts-mon**
 ```bash
@@ -61,6 +61,40 @@ cd aws-scripts-mon
 `*/5 * * * * ~/aws-scripts-mon/mon-put-instance-data.pl --mem-used-incl-cache-buff --mem-util --disk-space-util --disk-path=/ --from-cron`
 
 `/var/log/cron`
+
+
+* Stats of the instance
+`./mon-get-instance-stats.pl --recent-hours=12`
+
+
+
+### AWS Systems Manager
+
+Install or Update the SSM Agent  
+https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/install-CloudWatch-Agent-on-first-instance.html?shortFooter=true  
+
+```bash
+yum install -y https://s3.eu-west-1.amazonaws.com/amazon-ssm-eu-west-1/latest/linux_amd64/amazon-ssm-agent.rpm
+status amazon-ssm-agent
+
+# https://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-agent-logs.html?shortFooter=true
+/var/log/amazon/ssm/amazon-ssm-agent.log
+/var/log/amazon/ssm/errors.log
+/etc/amazon/ssm/seelog.xml
+
+#  UN INSTALL
+sudo yum erase amazon-ssm-agent –y
+
+```
+
+
+### Stress
+
+```bash
+yum install -y stress
+stress --cpu 2 --io 1 --vm 1 --vm-bytes 128M --timeout 10s --verbos
+```
+
 
 ### Pending
 * Autoscaling Group
